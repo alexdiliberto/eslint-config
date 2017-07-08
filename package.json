@@ -1,0 +1,26 @@
+{
+  "name": "@alexdiliberto/eslint-config",
+  "version": "1.0.0",
+  "description": "Alex DiLiberto's preferred ESLint rules",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslintconfig"
+  ],
+  "license": "MIT",
+  "author": "Alex DiLiberto <npm@alexdiliberto.com>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexdiliberto/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alexdiliberto/ember-cli-transformicons/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "eslint": ">= 4.0.0"
+  }
+}
