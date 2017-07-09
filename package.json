@@ -18,9 +18,16 @@
     "url": "https://github.com/alexdiliberto/eslint-config/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape test/**/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1",
+    "tape": "^4.7.0"
   },
   "peerDependencies": {
     "eslint": ">= 4.0.0"
+  },
+  "engines": {
+    "node": ">= 4"
   }
 }

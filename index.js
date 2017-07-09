@@ -10,7 +10,7 @@ module.exports = {
     //   `as-needed`: enforces no braces where they can be omitted (default)
     //   `requireReturnForObjectLiteral`: requires braces and an explicit `return` for object literals.
     'arrow-body-style': ['error', 'as-needed', {
-      requireReturnForObjectLiteral: true,
+      requireReturnForObjectLiteral: true
     }],
 
     // Requires parentheses around arrow function parameters regardless of arity
