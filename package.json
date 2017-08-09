@@ -18,11 +18,17 @@
     "url": "https://github.com/alexdiliberto/eslint-config/issues"
   },
   "scripts": {
+    "commit": "git-cz",
+    "commitmsg": "commitlint -e",
     "deploy": "np",
     "test": "tape test/**/*.js"
   },
   "devDependencies": {
+    "@commitlint/cli": "^3.1.2",
+    "@commitlint/config-angular": "^3.1.1",
+    "commitizen": "^2.9.6",
     "eslint": "^4.3.0",
+    "husky": "^0.14.3",
     "np": "^2.16.0",
     "tape": "^4.7.0"
   },
