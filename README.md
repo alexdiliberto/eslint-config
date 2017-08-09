@@ -1,4 +1,7 @@
-# @alexdiliberto/eslint-config [![build status][travis-badge]][travis-url]
+# @alexdiliberto/eslint-config
+[![Build status][travis-badge]][travis-url]
+[![Commitizen friendly][cz-badge]][cz-cli-url]
+
 [Shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) for all of my preferred ESLint rules.
 
 ## Installation
@@ -35,4 +38,6 @@ MIT Copyright (c) [Alex DiLiberto](https://alexdiliberto.com/)
 
 
 [travis-badge]: https://travis-ci.org/alexdiliberto/eslint-config.svg?branch=master
-[travis-url]: hhttps://travis-ci.org/alexdiliberto/eslint-config
+[travis-url]: https://travis-ci.org/alexdiliberto/eslint-config
+[cz-badge]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[cz-cli-url]: https://commitizen.github.io/cz-cli/
