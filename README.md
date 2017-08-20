@@ -6,6 +6,12 @@
 
 ## Installation
 ```bash
+yarn add -D @alexdiliberto/eslint-config
+```
+
+OR
+
+```bash
 npm install  --save-dev @alexdiliberto/eslint-config
 ```
 
