@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/alexdiliberto/eslint-config/compare/v2.0.0...v2.1.0) (2018-11-10)
+
+
+### Features
+
+* **rules:** adding new eslint rules ([e240fe6](https://github.com/alexdiliberto/eslint-config/commit/e240fe6))
+
+
+
 # [2.0.0](https://github.com/alexdiliberto/eslint-config/compare/v1.1.1...v2.0.0) (2018-11-10)
 
 
