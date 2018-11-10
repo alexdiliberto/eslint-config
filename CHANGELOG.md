@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/alexdiliberto/eslint-config/compare/v1.1.1...v2.0.0) (2018-11-10)
+
+
+### Build System
+
+* **node:** minimum node version >= 6 ([b2c92b0](https://github.com/alexdiliberto/eslint-config/commit/b2c92b0))
+
+
+### BREAKING CHANGES
+
+* **node:** consumers must upgrade their version of node >= v6 to be compatible with this sharable config
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/alexdiliberto/eslint-config/compare/v1.1.0...v1.1.1) (2017-08-13)
 
