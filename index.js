@@ -1,5 +1,8 @@
 module.exports = {
   rules: {
+    // Enforces getter/setter pairs in objects
+    'accessor-pairs': 'error',
+
     // Enforces consistent spacing inside array brackets
     'array-bracket-spacing': ['error', 'never'],
 
@@ -23,6 +26,10 @@ module.exports = {
       before: true,
       after: true
     }],
+
+    // Enforce spaces inside of blocks after opening block and before closing block
+    //    `always`: requires one or more spaces (default)
+    'block-spacing': 'error',
 
     // Enforces consistent brace style for blocks
     //   `1tbs`: one true brace (1tbs) style in which the opening brace of a block is placed on the same line as its corresponding statement or declaration
@@ -64,21 +71,28 @@ module.exports = {
     // Never omit curly braces around blocks, even when optional
     'curly': ['error', 'all'],
 
+    // Require Default Case in Switch Statements
+    'default-case': 'error',
+
+    // Prevents the use of mixed newlines around the dot in a member expression
+    //   `property`: the dot in a member expression should be on the same line as the property portion
+    'dot-location': ['error', 'property'],
+
     // Enforce property access via dot notation style whenever possible
     //   `allowKeywords`: require using avoiding dot notation even for reserved keyword properties
     'dot-notation': ['error', {
       allowKeywords: true
     }],
 
-    // Prevents the use of mixed newlines around the dot in a member expression
-    //   `property`: the dot in a member expression should be on the same line as the property portion
-    'dot-location': ['error', 'property'],
-
     // Enforces using type-safe equality operators (`===` and `!==`)
     //   `null`: do not apply this rule for the `null` literal
     'eqeqeq': ['error', 'always', {
       null: 'ignore'
     }],
+
+    // Require newline at the end of files
+    //    `always`: enforces that files end with a newline (LF) (default)
+    'eol-last': ['error', 'always'],
 
     // Disallows spaces between the function name and the opening parenthesis
     'func-call-spacing': ['error', 'never'],
@@ -89,6 +103,9 @@ module.exports = {
     // Enforces spacing around the `*` in generator functions
     //   `both`: enforce spacing between the `function` keyword and the `*` as well as between the `*` and the `function` name (or the opening parenthesis for anonymous generator functions)
     'generator-star-spacing': ['error', 'both'],
+
+    // Enforce Callback Error Handling (Common JS)
+    'handle-callback-err': ['error', '^(err|error)$'],
 
     // Enforces a consistent 2-space indentation style
     //   `SwitchCase`: enforce an indentation level of 1 for case clauses in switch statements
@@ -158,6 +175,9 @@ module.exports = {
 
     // Disallow the potentially dangerous and slow `eval()` function
     'no-eval': 'error',
+
+    // Disallow unnecessary function binding
+    'no-extra-bind': 'error',
 
     // Disallow floating decimal points whenever a numeric value has a decimal point but is missing a number either before or after it
     'no-floating-decimal': 'error',
