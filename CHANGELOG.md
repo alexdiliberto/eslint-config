@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/alexdiliberto/eslint-config/compare/v2.2.1...v3.0.0) (2019-03-07)
+
+
+### Build System
+
+* **engines:** require node >= 8 ([2a6fc5b](https://github.com/alexdiliberto/eslint-config/commit/2a6fc5b))
+
+
+### BREAKING CHANGES
+
+* **engines:** breaking change requires consumers minimum node version 8 and above
+
+
+
 ## [2.2.1](https://github.com/alexdiliberto/eslint-config/compare/v2.2.0...v2.2.1) (2019-03-07)
 
 
