@@ -1,3 +1,13 @@
+# [2.2.0](https://github.com/alexdiliberto/eslint-config/compare/v2.1.0...v2.2.0) (2019-03-07)
+
+
+### Features
+
+* **rules:** add `no-useless-catch` rule ([cd0725b](https://github.com/alexdiliberto/eslint-config/commit/cd0725b))
+* **rules:** add `padded-blocks` rule ([7699d4b](https://github.com/alexdiliberto/eslint-config/commit/7699d4b))
+
+
+
 # [2.1.0](https://github.com/alexdiliberto/eslint-config/compare/v2.0.0...v2.1.0) (2018-11-10)
 
 
