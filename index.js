@@ -268,6 +268,9 @@ module.exports = {
     // Enforce a consistent linebreaks to be placed after the operator
     'operator-linebreak': ['error', 'after'],
 
+    // Disallow padding within block statements
+    'padded-blocks': ['error', 'never'],
+
     // Disallow `Function.prototype.apply()` in situations where the spread operator could be used instead
     'prefer-spread': 'error',
 
