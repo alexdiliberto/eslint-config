@@ -41,6 +41,13 @@ To use this config in conjunction with [ESLint's core `eslint:recommended` rules
 }
 ```
 
+## Deploy
+Due to an issue with `yarn` and `np`, simply use `npm` when running the `deploy` script
+
+```js
+npm run deploy
+```
+
 ## License
 MIT Copyright (c) [Alex DiLiberto](https://alexdiliberto.com/)
 
