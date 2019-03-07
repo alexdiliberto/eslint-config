@@ -12,7 +12,7 @@ yarn add -D @alexdiliberto/eslint-config
 OR
 
 ```bash
-npm install  --save-dev @alexdiliberto/eslint-config
+npm install --save-dev @alexdiliberto/eslint-config
 ```
 
 Next, install all necessary peer dependencies as notified via console after running the above command.
