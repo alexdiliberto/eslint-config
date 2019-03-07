@@ -1,3 +1,7 @@
+## [2.2.1](https://github.com/alexdiliberto/eslint-config/compare/v2.2.0...v2.2.1) (2019-03-07)
+
+
+
 # [2.2.0](https://github.com/alexdiliberto/eslint-config/compare/v2.1.0...v2.2.0) (2019-03-07)
 
 
