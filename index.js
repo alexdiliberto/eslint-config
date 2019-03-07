@@ -228,14 +228,17 @@ module.exports = {
       ignoreComments: true
     }],
 
+    // Disallow redundant catch clauses which simply rethrow the original error
+    'no-useless-catch': 'error',
+
+    // Disallow unnecessary concatenation of 2 literals when they could be combined into a single literal
+    'no-useless-concat': 'error',
+
     // Disallow ternary operators when simpler alternatives exist
     //   `defaultAssignment`: disallows the conditional expression as a default assignment pattern
     'no-unneeded-ternary': ['error', {
       defaultAssignment: false
     }],
-
-    // Disallow unnecessary concatenation of 2 literals when they could be combined into a single literal
-    'no-useless-concat': 'error',
 
     // Disallow unused variables, functions, and parameters of functions
     //   `vars`: checks all variables for usage, including those in the global scope
