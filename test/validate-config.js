@@ -21,9 +21,11 @@ const eslintOpts = {
 
 const cli = new CLIEngine(eslintOpts);
 
-test('load rules in eslint to validate all rule syntax is correct', function(t) {
+test('load rules in eslint to validate all rule syntax is correct', (t) => {
   // Runs the linter on the repo files and asserts no errors
   let report = cli.executeOnFiles(files);
+
+  t.plan(4);
 
   t.equal(report.errorCount, 0, 'report.errorCount === 0');
   t.equal(report.fixableErrorCount, 0, 'report.fixableErrorCount === 0');
