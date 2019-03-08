@@ -161,17 +161,12 @@ module.exports = {
       allowParens: false
     }],
 
+    // NOTE: This rule overrides `eslint:recommended`
     // Disallow calls to methods of the console object
     //   `allow`: exception to allow using `console.warn` and `console.error`
     'no-console': ['error', {
       allow: ['warn', 'error']
     }],
-
-    // Disallow duplicate names in class members
-    'no-dupe-class-members': 'error',
-
-    // Disallow empty block statements
-    'no-empty': 'error',
 
     // Disallow the potentially dangerous and slow `eval()` function
     'no-eval': 'error',
@@ -188,8 +183,7 @@ module.exports = {
     // Disallow usage of the `__iterator__` property, which is not implemented in several browsers
     'no-iterator': 'error',
 
-    // Disallow functions in loops
-    //   NOTE: `let` and `const` mitigate this problem
+    // Disallow functions in loops (`let` and `const` mitigate this problem)
     'no-loop-func': 'error',
 
     // Disallow unnecessary and potentially confusing nested blocks at the top level of a script or within other blocks
@@ -240,6 +234,7 @@ module.exports = {
       defaultAssignment: false
     }],
 
+    // NOTE: This rule overrides `eslint:recommended`
     // Disallow unused variables, functions, and parameters of functions
     //   `vars`: checks all variables for usage, including those in the global scope
     //   `args`: do not check arguments
