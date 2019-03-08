@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/alexdiliberto/eslint-config/compare/v3.0.0...v3.0.1) (2019-03-08)
+
+
+### Bug Fixes
+
+* **rules:** updated my recommended rule overrides ([4682f1f](https://github.com/alexdiliberto/eslint-config/commit/4682f1f))
+
+
+
 # [3.0.0](https://github.com/alexdiliberto/eslint-config/compare/v2.2.1...v3.0.0) (2019-03-07)
 
 
