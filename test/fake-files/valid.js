@@ -1,4 +1,4 @@
-const VALUE = 2;
+var VALUE = 2;
 
 function aFunction(param1) {
   if (param1) {
