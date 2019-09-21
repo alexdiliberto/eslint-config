@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v4.0.1"></a>
+## [v4.0.1] - 2019-09-20
+### Build
+- **deps-dev:** remove conventional-changelog-cli
+
+### Docs
+- **changelog:** update to git-chglog
+
+### Pull Requests
+- Merge pull request [#73](https://github.com/alexdiliberto/eslint-config/issues/73) from alexdiliberto/changelog-update
+
+
 <a name="v4.0.0"></a>
 ## [v4.0.0] - 2019-09-20
 ### Build
@@ -239,7 +251,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.0...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.1...HEAD
+[v4.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.0...v4.0.1
 [v4.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v3.1.0...v4.0.0
 [v3.1.0]: https://github.com/alexdiliberto/eslint-config/compare/v3.0.1...v3.1.0
 [v3.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v3.0.0...v3.0.1
