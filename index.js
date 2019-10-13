@@ -318,10 +318,20 @@ module.exports = {
     }],
 
     // Require whitespace (space or tab) beginning a comment
-    // `block.balanced`: the `/*` must be followed by at least one whitespace, and the `*/` must be preceded by at least one whitespace
+    //   `line.markers`: allow triple-slash directive comment style (`/// reference MyThing`)
+    //   `line.exceptions`: allow the following comment style (`//-----------`)
+    //   `block.balanced`: the `/*` must be followed by at least one whitespace, and the `*/` must be preceded by at least one whitespace
+    //   `block.exceptions`: allow the following comment style as the first line of a block comment (`/**********`)
+    //   `block.markers`: allow the following comment styles the first line of a block comment (`/*!`)
     'spaced-comment': ['error', 'always', {
+      line: {
+        markers: ['/'],
+        exceptions: ['-', '+']
+      },
       block: {
-        balanced: true
+        balanced: true,
+        exceptions: ['*'],
+        markers: ['!']
       }
     }],
 
