@@ -1,6 +1,6 @@
 {
   "name": "@alexdiliberto/eslint-config",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Alex DiLiberto's preferred ESLint rules",
   "keywords": [
     "eslint",

@@ -2,6 +2,32 @@
 ## [Unreleased]
 
 
+<a name="v4.1.0"></a>
+## [v4.1.0] - 2019-10-13
+### Bug Fixes
+- **rules:** `spaced-comment` rule allows more comprehensive format
+
+### Build
+- **deps-dev:** bump husky from 3.0.6 to 3.0.7
+- **deps-dev:** bump husky from 3.0.8 to 3.0.9
+- **deps-dev:** bump np from 5.1.0 to 5.1.1
+- **deps-dev:** bump husky from 3.0.7 to 3.0.8
+- **deps-dev:** bump eslint from 6.5.0 to 6.5.1
+- **deps-dev:** bump eslint from 6.4.0 to 6.5.0
+- **deps-dev:** bump husky from 3.0.5 to 3.0.6
+- **yarn.lock:** adding automatic integrity hashes
+
+### Pull Requests
+- Merge pull request [#81](https://github.com/alexdiliberto/eslint-config/issues/81) from alexdiliberto/spaced-comment-update
+- Merge pull request [#80](https://github.com/alexdiliberto/eslint-config/issues/80) from alexdiliberto/dependabot/npm_and_yarn/husky-3.0.9
+- Merge pull request [#79](https://github.com/alexdiliberto/eslint-config/issues/79) from alexdiliberto/dependabot/npm_and_yarn/np-5.1.1
+- Merge pull request [#78](https://github.com/alexdiliberto/eslint-config/issues/78) from alexdiliberto/dependabot/npm_and_yarn/husky-3.0.8
+- Merge pull request [#77](https://github.com/alexdiliberto/eslint-config/issues/77) from alexdiliberto/dependabot/npm_and_yarn/eslint-6.5.1
+- Merge pull request [#76](https://github.com/alexdiliberto/eslint-config/issues/76) from alexdiliberto/dependabot/npm_and_yarn/eslint-6.5.0
+- Merge pull request [#75](https://github.com/alexdiliberto/eslint-config/issues/75) from alexdiliberto/dependabot/npm_and_yarn/husky-3.0.7
+- Merge pull request [#74](https://github.com/alexdiliberto/eslint-config/issues/74) from alexdiliberto/dependabot/npm_and_yarn/husky-3.0.6
+
+
 <a name="v4.0.1"></a>
 ## [v4.0.1] - 2019-09-20
 ### Build
@@ -251,7 +277,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.1...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.0...HEAD
+[v4.1.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.1...v4.1.0
 [v4.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.0...v4.0.1
 [v4.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v3.1.0...v4.0.0
 [v3.1.0]: https://github.com/alexdiliberto/eslint-config/compare/v3.0.1...v3.1.0
