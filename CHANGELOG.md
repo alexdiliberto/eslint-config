@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v4.1.1"></a>
+## [v4.1.1] - 2019-10-19
+### Build
+- **yarn.lock:** update to remediate outdated `set-value` dependency
+
+### CI
+- **travis:** remove `.travis.yml` file
+
+
 <a name="v4.1.0"></a>
 ## [v4.1.0] - 2019-10-13
 ### Bug Fixes
@@ -277,7 +286,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.0...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.1...HEAD
+[v4.1.1]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.1...v4.1.0
 [v4.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.0...v4.0.1
 [v4.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v3.1.0...v4.0.0
