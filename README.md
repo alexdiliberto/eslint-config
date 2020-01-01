@@ -17,7 +17,7 @@ npm install --save-dev @alexdiliberto/eslint-config
 
 Next, install all necessary peer dependencies as notified via console after running the above command.
 
-Alternatively, if you are using this eslint-config with an Ember CLI project -- simply ensure that the [`ember-cli-eslint`](https://github.com/ember-cli/ember-cli-eslint) addon is installed with version [`>= v4.0.0`](https://github.com/ember-cli/ember-cli-eslint/releases/tag/v4.0.0) and that will take care of the necessary peer dependencies for you automatically.
+Alternatively, if you are using this eslint-config with an Ember CLI project -- simply ensure that the [`ember-cli-eslint`](https://github.com/ember-cli/ember-cli-eslint) addon is installed with version [`>= v5.0.0`](https://github.com/ember-cli/ember-cli-eslint/releases/tag/v5.0.0) and that will take care of the necessary peer dependencies for you automatically.
 
 ## Usage
 Add `@alexdiliberto` to the `extends` array in your project's `.eslintrc.js` file [as a shorthand](https://eslint.org/docs/developer-guide/shareable-configs#npm-scoped-modules) and these sharable config rules will be automatically consumed by ESLint from within your project.
