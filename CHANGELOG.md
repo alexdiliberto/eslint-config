@@ -2,6 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v4.1.4"></a>
+## [v4.1.4] - 2020-03-24
+### Build
+- **package.json:** volta pin yarn
+- **package.json:** swapping `np` for `release-it`
+
+### CI
+- **release-it:** add `.release-it.json` config file
+
+### Docs
+- **readme.md:** update deploy directions
+
+
 <a name="v4.1.3"></a>
 ## [v4.1.3] - 2020-03-24
 ### Build
@@ -355,7 +368,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.3...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.4...HEAD
+[v4.1.4]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.3...v4.1.4
 [v4.1.3]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.2...v4.1.3
 [v4.1.2]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.1...v4.1.2
 [v4.1.1]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.0...v4.1.1
