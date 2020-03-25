@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v4.1.3"></a>
+## [v4.1.3] - 2020-03-24
+### Build
+- **package.json:** fix `repository.url` field value
+
+
 <a name="v4.1.2"></a>
 ## [v4.1.2] - 2020-03-24
 ### Build
@@ -349,7 +355,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.2...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.3...HEAD
+[v4.1.3]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.2...v4.1.3
 [v4.1.2]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.1...v4.1.2
 [v4.1.1]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.0.1...v4.1.0
