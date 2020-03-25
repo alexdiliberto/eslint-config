@@ -12,7 +12,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexdiliberto/eslint-config.git"
+    "url": "https://github.com/alexdiliberto/eslint-config.git"
   },
   "bugs": {
     "url": "https://github.com/alexdiliberto/eslint-config/issues"
