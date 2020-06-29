@@ -254,7 +254,7 @@ module.exports = {
     // Disallow `with` statements because it adds members of an object to the current scope, making it impossible to tell what a variable inside the block actually refers to
     'no-with': 'error',
 
-    // Require consisten spacing inside braces of object literals, destructuring assignments, and import/export specifiers
+    // Require consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers
     'object-curly-spacing': ['error', 'always'],
 
     // Enforce the use of the shorthand syntax for all methods defined in object literals and any properties defined where the key name matches name of the assigned variable
@@ -268,6 +268,16 @@ module.exports = {
 
     // Disallow padding within block statements
     'padded-blocks': ['error', 'never'],
+
+    // Custom rules for padding between statements
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: '*', next: 'return' },
+      { blankLine: 'always', prev: '*', next: 'block-like' },
+      { blankLine: 'always', prev: 'block-like', next: '*' },
+      { blankLine: 'always', prev: ['const', 'let'], next: '*' },
+      { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] }
+    ],
 
     // Disallow `Function.prototype.apply()` in situations where the spread operator could be used instead
     'prefer-spread': 'error',
