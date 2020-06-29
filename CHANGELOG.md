@@ -2,6 +2,76 @@
 ## [Unreleased]
 
 
+<a name="v4.2.0"></a>
+## [v4.2.0] - 2020-06-29
+### Build
+- **deps-dev:** bump release-it from 13.3.0 to 13.3.1
+- **deps-dev:** bump [@commitlint](https://github.com/commitlint)/cli from 8.3.5 to 9.0.1
+- **deps-dev:** bump release-it from 13.3.1 to 13.3.2
+- **deps-dev:** bump release-it from 13.6.3 to 13.6.4
+- **deps-dev:** bump eslint from 7.3.0 to 7.3.1
+- **deps-dev:** bump [@commitlint](https://github.com/commitlint)/config-angular from 8.3.4 to 9.0.1
+- **deps-dev:** bump eslint from 7.2.0 to 7.3.0
+- **deps-dev:** bump release-it from 13.6.2 to 13.6.3
+- **deps-dev:** bump eslint from 7.1.0 to 7.2.0
+- **deps-dev:** bump release-it from 13.6.1 to 13.6.2
+- **deps-dev:** bump tape from 5.0.0 to 5.0.1
+- **deps-dev:** bump eslint from 7.0.0 to 7.1.0
+- **deps-dev:** bump release-it from 13.6.0 to 13.6.1
+- **deps-dev:** bump release-it from 13.5.8 to 13.6.0
+- **deps-dev:** bump eslint from 6.8.0 to 7.0.0
+- **deps-dev:** bump commitizen from 4.1.1 to 4.1.2
+- **deps-dev:** bump commitizen from 4.0.5 to 4.1.1
+- **deps-dev:** bump cz-conventional-changelog from 3.1.0 to 3.2.0
+- **deps-dev:** bump release-it from 13.5.7 to 13.5.8
+- **deps-dev:** bump tape from 4.13.2 to 5.0.0
+- **deps-dev:** bump commitizen from 4.0.4 to 4.0.5
+- **deps-dev:** bump release-it from 13.5.5 to 13.5.7
+- **deps-dev:** bump release-it from 13.5.4 to 13.5.5
+- **deps-dev:** bump release-it from 13.5.2 to 13.5.4
+- **deps-dev:** bump husky from 4.2.3 to 4.2.5
+- **deps-dev:** bump release-it from 13.5.1 to 13.5.2
+- **deps-dev:** bump commitizen from 4.0.3 to 4.0.4
+- **deps-dev:** bump release-it from 13.5.0 to 13.5.1
+- **deps-dev:** bump release-it from 13.3.2 to 13.5.0
+- **package.json:** volta pin yarn
+- **yarn.lock:** dedupe
+
+### Features
+- **rules:** adding 'padding-line-between-statements' rule
+
+### Pull Requests
+- Merge pull request [#141](https://github.com/alexdiliberto/eslint-config/issues/141) from alexdiliberto/dependabot/npm_and_yarn/commitlint/cli-9.0.1
+- Merge pull request [#143](https://github.com/alexdiliberto/eslint-config/issues/143) from alexdiliberto/dependabot/npm_and_yarn/commitlint/config-angular-9.0.1
+- Merge pull request [#145](https://github.com/alexdiliberto/eslint-config/issues/145) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.6.4
+- Merge pull request [#144](https://github.com/alexdiliberto/eslint-config/issues/144) from alexdiliberto/dependabot/npm_and_yarn/eslint-7.3.1
+- Merge pull request [#142](https://github.com/alexdiliberto/eslint-config/issues/142) from alexdiliberto/dependabot/npm_and_yarn/eslint-7.3.0
+- Merge pull request [#140](https://github.com/alexdiliberto/eslint-config/issues/140) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.6.3
+- Merge pull request [#139](https://github.com/alexdiliberto/eslint-config/issues/139) from alexdiliberto/dependabot/npm_and_yarn/eslint-7.2.0
+- Merge pull request [#138](https://github.com/alexdiliberto/eslint-config/issues/138) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.6.2
+- Merge pull request [#137](https://github.com/alexdiliberto/eslint-config/issues/137) from alexdiliberto/dependabot/npm_and_yarn/tape-5.0.1
+- Merge pull request [#136](https://github.com/alexdiliberto/eslint-config/issues/136) from alexdiliberto/dependabot/npm_and_yarn/eslint-7.1.0
+- Merge pull request [#133](https://github.com/alexdiliberto/eslint-config/issues/133) from alexdiliberto/dependabot/npm_and_yarn/eslint-7.0.0
+- Merge pull request [#135](https://github.com/alexdiliberto/eslint-config/issues/135) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.6.1
+- Merge pull request [#134](https://github.com/alexdiliberto/eslint-config/issues/134) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.6.0
+- Merge pull request [#126](https://github.com/alexdiliberto/eslint-config/issues/126) from alexdiliberto/dependabot/npm_and_yarn/tape-5.0.0
+- Merge pull request [#132](https://github.com/alexdiliberto/eslint-config/issues/132) from alexdiliberto/dependabot/npm_and_yarn/commitizen-4.1.2
+- Merge pull request [#130](https://github.com/alexdiliberto/eslint-config/issues/130) from alexdiliberto/dependabot/npm_and_yarn/commitizen-4.1.1
+- Merge pull request [#131](https://github.com/alexdiliberto/eslint-config/issues/131) from alexdiliberto/dependabot/npm_and_yarn/cz-conventional-changelog-3.2.0
+- Merge pull request [#129](https://github.com/alexdiliberto/eslint-config/issues/129) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.8
+- Merge pull request [#128](https://github.com/alexdiliberto/eslint-config/issues/128) from alexdiliberto/dependabot/npm_and_yarn/commitizen-4.0.5
+- Merge pull request [#127](https://github.com/alexdiliberto/eslint-config/issues/127) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.7
+- Merge pull request [#125](https://github.com/alexdiliberto/eslint-config/issues/125) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.5
+- Merge pull request [#124](https://github.com/alexdiliberto/eslint-config/issues/124) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.4
+- Merge pull request [#123](https://github.com/alexdiliberto/eslint-config/issues/123) from alexdiliberto/dependabot/npm_and_yarn/husky-4.2.5
+- Merge pull request [#122](https://github.com/alexdiliberto/eslint-config/issues/122) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.2
+- Merge pull request [#121](https://github.com/alexdiliberto/eslint-config/issues/121) from alexdiliberto/dependabot/npm_and_yarn/commitizen-4.0.4
+- Merge pull request [#120](https://github.com/alexdiliberto/eslint-config/issues/120) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.1
+- Merge pull request [#119](https://github.com/alexdiliberto/eslint-config/issues/119) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.5.0
+- Merge pull request [#118](https://github.com/alexdiliberto/eslint-config/issues/118) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.3.2
+- Merge pull request [#117](https://github.com/alexdiliberto/eslint-config/issues/117) from alexdiliberto/dependabot/npm_and_yarn/release-it-13.3.1
+
+
 <a name="v4.1.5"></a>
 ## [v4.1.5] - 2020-03-24
 ### CI
@@ -374,7 +444,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.5...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v4.2.0...HEAD
+[v4.2.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.5...v4.2.0
 [v4.1.5]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.4...v4.1.5
 [v4.1.4]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.3...v4.1.4
 [v4.1.3]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.2...v4.1.3
