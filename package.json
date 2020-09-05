@@ -33,7 +33,7 @@
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^7.0.0",
     "husky": "^4.2.3",
-    "release-it": "^13.3.0",
+    "release-it": "^14.0.2",
     "tap-spec": "^5.0.0",
     "tape": "^5.0.0"
   },
