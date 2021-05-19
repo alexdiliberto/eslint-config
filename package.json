@@ -19,8 +19,10 @@
   },
   "scripts": {
     "changelog": "git-chglog -o CHANGELOG.md",
+    "clean": "rm -rf node_modules",
     "commit": "git-cz",
     "release": "release-it",
+    "prepare": "husky install",
     "test": "yarn test:unit:spec",
     "test:unit": "tape test/*.js",
     "test:unit:spec": "tape test/*.js | tap-spec",
@@ -32,7 +34,7 @@
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^7.0.0",
-    "husky": "^4.2.3",
+    "husky": "^6.0.0",
     "release-it": "^14.0.2",
     "tap-spec": "^5.0.0",
     "tape": "^5.0.0"
@@ -50,11 +52,6 @@
   },
   "engines": {
     "node": ">= 10"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e"
-    }
   },
   "volta": {
     "node": "12.22.1",
