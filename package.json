@@ -33,14 +33,14 @@
     "@commitlint/config-angular": "^12.1.4",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "husky": "^6.0.0",
     "release-it": "^14.7.0",
     "tap-spec": "^5.0.0",
     "tape": "^5.2.2"
   },
   "peerDependencies": {
-    "eslint": ">= 7.27.0"
+    "eslint": ">= 7.28.0"
   },
   "publishConfig": {
     "access": "public"
