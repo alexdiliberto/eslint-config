@@ -40,7 +40,7 @@
     "tape": "^5.3.1"
   },
   "peerDependencies": {
-    "eslint": ">= 7.32.0"
+    "eslint": ">= 8.0.1"
   },
   "publishConfig": {
     "access": "public"
