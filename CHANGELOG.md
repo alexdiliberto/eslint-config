@@ -2,6 +2,62 @@
 ## [Unreleased]
 
 
+<a name="v6.0.1"></a>
+## [v6.0.1] - 2021-10-16
+### Chore
+- **deps:** update dependency eslint to v8 ([#293](https://github.com/alexdiliberto/eslint-config/issues/293))
+
+
+<a name="v6.0.0"></a>
+## [v6.0.0] - 2021-10-16
+### Build
+- **deps:** bump path-parse from 1.0.6 to 1.0.7 ([#279](https://github.com/alexdiliberto/eslint-config/issues/279))
+- **deps:** bump trim-newlines from 3.0.0 to 3.0.1 ([#259](https://github.com/alexdiliberto/eslint-config/issues/259))
+
+### CI
+- update eslint and fix test ([#297](https://github.com/alexdiliberto/eslint-config/issues/297))
+
+### Chore
+- **deps:** update yarn to v1.22.17
+- **deps:** update node.js to v14.18.1
+- **deps:** update yarn to v1.22.16
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^13.2.1
+- **deps:** update yarn to v1.22.15
+- **deps:** update yarn to v1.22.14
+- **deps:** update yarn to v1.22.13
+- **deps:** update node.js to v14.18.0
+- **deps:** update commitlint monorepo to ^13.2.0
+- **deps:** update dependency release-it to ^14.11.6
+- **deps:** update node.js to v14.17.6
+- **deps:** update dependency husky to ^7.0.2
+- **deps:** update dependency release-it to ^14.11.5
+- **deps:** update dependency release-it to ^14.11.4
+- **deps:** update node.js to v14.17.5
+- **deps:** update dependency release-it to ^14.11.3
+- **deps:** update dependency release-it to ^14.11.0
+- **deps:** update node.js to v14.17.4
+- **deps:** update dependency tape to ^5.3.1
+- **deps:** update dependency tape to ^5.3.0
+- **deps:** update yarn to v1.22.11
+- **deps:** update commitlint monorepo to v13
+- **deps:** update dependency release-it to ^14.10.1
+- **deps:** update dependency eslint to v7.31.0
+- **deps:** update dependency husky to ^7.0.1
+- **deps:** update node.js to v14.17.3
+- **deps:** update dependency eslint to v7.30.0
+- **deps:** update node.js to v14.17.2
+- **deps:** update dependency husky to v7
+- **deps:** update dependency release-it to ^14.10.0
+- **deps:** update dependency eslint to v7.29.0
+- **deps:** update node.js to v14.17.1
+- **deps:** update dependency release-it to ^14.9.0
+- **deps:** update dependency release-it to ^14.8.0
+- **deps:** update dependency eslint to v7.28.0
+
+### Test
+- fix eslint v8 test-runner ([#298](https://github.com/alexdiliberto/eslint-config/issues/298))
+
+
 <a name="v5.0.0"></a>
 ## [v5.0.0] - 2021-05-31
 ### Build
@@ -620,7 +676,9 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v5.0.0...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.1...HEAD
+[v6.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.0...v6.0.1
+[v6.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v5.0.0...v6.0.0
 [v5.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.2.0...v5.0.0
 [v4.2.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.5...v4.2.0
 [v4.1.5]: https://github.com/alexdiliberto/eslint-config/compare/v4.1.4...v4.1.5
