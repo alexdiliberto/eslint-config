@@ -67,8 +67,8 @@ test('lint: js file with invalid syntax', (t) => {
   t.deepEqual(errorReport.messages.map((msg) => msg.ruleId), [
     'consistent-return',
     'space-before-blocks',
-    'curly',
     'indent',
+    'curly',
     'block-spacing',
     'brace-style',
     'eol-last'
