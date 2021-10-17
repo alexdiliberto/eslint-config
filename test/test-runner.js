@@ -1,6 +1,6 @@
 'use strict';
 
-const CLIEngine = require('eslint').CLIEngine;
+const { ESLint } = require('eslint');
 const test = require('tape');
 const rules = require('..').rules;
 const path = require('path');
@@ -10,21 +10,26 @@ const baseTestFakeFileDir = path.resolve(path.join(__dirname, './fake-files/'));
 // Test against the rules defined in this repository
 const eslintOpts = {
   useEslintrc: false,
-  envs: ['node', 'es6'],
-  parserOptions: {
-    ecmaVersion: 2019
-  },
-  rules
+  overrideConfig: {
+    env: {
+      node: true,
+      es6: true,
+    },
+    parserOptions: {
+      ecmaVersion: 2019
+    },
+    rules
+  }
 };
 
-const cli = new CLIEngine(eslintOpts);
+const cli = new ESLint(eslintOpts);
 
-test('validate: load rules in eslint to validate all rule syntax is correct', (t) => {
+test('validate: load rules in eslint to validate all rule syntax is correct', async (t) => {
   // Source files to lint
   let files = ['index.js'];
 
   // Runs the linter on the given files
-  let report = cli.executeOnFiles(files);
+  let [report] = await cli.lintFiles(files);
 
   t.plan(4);
 
@@ -36,12 +41,12 @@ test('validate: load rules in eslint to validate all rule syntax is correct', (t
   t.end();
 });
 
-test('lint: js file with valid syntax', (t) => {
+test('lint: js file with valid syntax', async (t) => {
   // Source files to lint
   let files = [`${baseTestFakeFileDir}/valid.js`];
 
   // Runs the linter on the given files
-  let report = cli.executeOnFiles(files);
+  let [report] = await cli.lintFiles(files);
 
   t.plan(4);
 
@@ -53,18 +58,17 @@ test('lint: js file with valid syntax', (t) => {
   t.end();
 });
 
-test('lint: js file with invalid syntax', (t) => {
+test('lint: js file with invalid syntax', async (t) => {
   // Source files to lint
   let files = [`${baseTestFakeFileDir}/invalid.js`];
 
   // Runs the linter on the given files
-  let report = cli.executeOnFiles(files);
-  let [errorReport] = report.results;
+  let [report] = await cli.lintFiles(files);
 
   t.plan(5);
 
   t.equal(report.errorCount, 7, 'report.errorCount === 7');
-  t.deepEqual(errorReport.messages.map((msg) => msg.ruleId), [
+  t.deepEqual(report.messages.map((msg) => msg.ruleId), [
     'consistent-return',
     'space-before-blocks',
     'indent',
