@@ -33,7 +33,7 @@
     "@commitlint/config-angular": "^13.2.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.1",
     "husky": "^7.0.2",
     "release-it": "^14.11.6",
     "tap-spec": "^5.0.0",
