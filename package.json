@@ -34,7 +34,7 @@
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.1",
-    "husky": "^7.0.2",
+    "husky": "^7.0.4",
     "release-it": "^14.11.6",
     "tap-spec": "^5.0.0",
     "tape": "^5.3.1"
