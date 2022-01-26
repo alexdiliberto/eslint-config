@@ -37,7 +37,7 @@
     "husky": "^7.0.4",
     "release-it": "^14.12.4",
     "tap-spec": "^5.0.0",
-    "tape": "^5.4.1"
+    "tape": "^5.5.0"
   },
   "peerDependencies": {
     "eslint": ">= 8.7.0"
