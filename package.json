@@ -29,8 +29,8 @@
     "version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.3.0",
-    "@commitlint/config-angular": "^16.3.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-angular": "^20.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
