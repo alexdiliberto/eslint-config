@@ -5,7 +5,7 @@ on:
   push:
     # filtering branches here prevents duplicate builds from pull_request and push
     branches:
-      - master
+      - main
   # early issue detection: run CI weekly on Sundays
   schedule:
   - cron:  '0 6 * * 0'
@@ -15,21 +15,27 @@ env:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
-
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        node-version: [12.x, 14.x]
-
+        os: [ubuntu-latest, windows-latest, macos-14]
+        node-version: [18, 20, 22]
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: yarn install and test
-      run: |
-        yarn install
-        yarn test
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+      - name: Verify Node and Package Manager Versions
+        run: node -v && npm -v
+      - name: Verify Yarn Version
+        run: yarn --version || true
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test
+        run: yarn test
+
