@@ -48,7 +48,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true # get latest patch
-          # auto caching is on
+          cache: pnpm # enable pnpm store cache
 
       - name: Verify Node and PNPM Versions
         run: |
