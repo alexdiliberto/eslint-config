@@ -1,10 +1,89 @@
 // Docs:
 // https://docs.renovatebot.com/configuration-options/
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  // Good defaults + dashboard + conventional commit messages + group non-majors
   "extends": [
-    "config:base"
+    "config:recommended",
+    ":semanticCommits",
+    ":dependencyDashboard",
+    "group:allNonMajor"
   ],
+  // Reduce noise + keep updates predictable
+  "timezone": "America/New_York",
+  "schedule": ["after 9pm on sunday"],
+  "minimumReleaseAge": "3 days",
+  "rangeStrategy": "bump",
   "labels": ["dependencies"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  // Prefer PR automerge for safe updates
   "automerge": true,
-  "rangeStrategy": "bump"
+  "automergeType": "pr",
+  // Keep lockfile fresh
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["after 9pm on sunday"]
+  },
+  "packageRules": [
+    // Auto-merge non-major devDependency updates
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true
+    },
+    // Keep major bumps manual
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    // Never touch peerDependencies automatically (you control peers)
+    {
+      "matchDepTypes": ["peerDependencies"],
+      "enabled": false
+    },
+    ////////////////////////////////////////
+    // Grouping to reduce PR count
+    ////////////////////////////////////////
+    {
+      "groupName": "ESLint & Prettier",
+      "schedule": ["after 9pm on sunday"],
+      "packageNames": [
+        "eslint",
+        "eslint-config-prettier",
+        "prettier"
+      ],
+      "packagePatterns": [
+        "^eslint-plugin-.*",
+        "^@typescript-eslint/.*"
+      ]
+    },
+    {
+      "groupName": "Type Definitions",
+      "packagePatterns": ["^@types\\/.*"],
+      "schedule": ["after 9pm on sunday"]
+    },
+    {
+      "groupName": "Release & Commit tooling",
+      "schedule": ["after 9pm on sunday"],
+      "packageNames": [
+        "release-it",
+        "@release-it/conventional-changelog",
+        "husky",
+        "@commitlint/cli",
+        "@commitlint/config-angular",
+        "commitizen",
+        "cz-conventional-changelog"
+      ]
+    },
+    {
+      "groupName": "Test tooling",
+      "schedule": ["after 9pm on sunday"],
+      "packageNames": [
+        "tape",
+        "tap-spec"
+      ]
+    }
+  ]
 }
