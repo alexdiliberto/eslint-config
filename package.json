@@ -13,16 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexdiliberto/eslint-config.git"
+    "url": "git+https://github.com/alexdiliberto/eslint-config.git"
   },
   "license": "MIT",
   "author": "Alex DiLiberto <npm@alexdiliberto.com>",
+  "sideEffects": false,
   "type": "commonjs",
   "exports": {
     ".": "./flat.js",
     "./flat": "./flat.js"
   },
   "main": "flat.js",
+  "types": false,
   "files": [
     "flat.js",
     "README.md",
