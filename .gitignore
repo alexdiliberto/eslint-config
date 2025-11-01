@@ -1,1 +1,40 @@
+# Node dependencies
 node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Output of ESLint cache (optional optimization if you enable caching)
+.eslintcache
+
+
+# Coverage reports (if you decide to add coverage tooling like nyc or c8)
+coverage/
+
+# OS/Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Build output (if publishing transpiled code later)
+dist/
+lib/
+
+# Package manager locks (use if you're not committing them)
+# Uncomment depending on your preference:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+########################
+### PROJECT-SPECIFIC ###
+########################
+
+# Test temp directories
+test/.tmp-consumer/
+
