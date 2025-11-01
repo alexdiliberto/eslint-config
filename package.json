@@ -10,6 +10,13 @@
   "license": "MIT",
   "author": "Alex DiLiberto <npm@alexdiliberto.com>",
   "main": "index.js",
+  "type": "commonjs",
+  "homepage": "https://github.com/alexdiliberto/eslint-config#readme",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/alexdiliberto/eslint-config.git"
@@ -23,7 +30,8 @@
     "commit": "git-cz",
     "release": "release-it",
     "prepare": "husky install",
-    "test": "yarn test:unit:spec",
+    "lint": "eslint . --ext .js --no-error-on-unmatched-pattern",
+    "test": "pnpm test:unit:spec",
     "test:unit": "tape test/*.js",
     "test:unit:spec": "tape test/*.js | tap-spec",
     "version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md && git add CHANGELOG.md"
@@ -54,7 +62,7 @@
     "node": ">= 18.8.0"
   },
   "volta": {
-    "node": "20.12.2",
-    "yarn": "1.22.22"
-  }
+    "node": "20.19.5"
+  },
+  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
 }
