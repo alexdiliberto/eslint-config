@@ -1,0 +1,109 @@
+// flat.js — ESLint v9+ flat shareable config (CJS export)
+'use strict';
+
+const stylistic = require('@stylistic/eslint-plugin');
+
+/** @type {import('eslint').Linter.FlatConfig[]} */
+module.exports = [
+  {
+    plugins: { '@stylistic': stylistic },
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'script'
+    },
+    rules: {
+      // --- stylistic (migrated) ---
+      '@stylistic/array-bracket-spacing': ['error', 'never'],
+      '@stylistic/arrow-parens': ['error', 'always'],
+      '@stylistic/arrow-spacing': ['error', { before: true, after: true }],
+      '@stylistic/block-spacing': 'error',
+      '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: false }],
+      '@stylistic/comma-dangle': ['error', 'never'],
+      '@stylistic/comma-spacing': ['error', { before: false, after: true }],
+      '@stylistic/comma-style': ['error', 'last'],
+      '@stylistic/dot-location': ['error', 'property'],
+      '@stylistic/eol-last': ['error', 'always'],
+      '@stylistic/func-call-spacing': ['error', 'never'],
+      '@stylistic/generator-star-spacing': ['error', 'both'],
+      '@stylistic/indent': ['error', 2, { SwitchCase: 1 }],
+      '@stylistic/key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'minimum' }],
+      '@stylistic/keyword-spacing': ['error', { before: true, after: true }],
+      '@stylistic/max-statements-per-line': ['error', { max: 1 }],
+      '@stylistic/no-confusing-arrow': ['error', { allowParens: false }],
+      '@stylistic/no-floating-decimal': 'error',
+      '@stylistic/no-multi-spaces': 'error',
+      '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }],
+      '@stylistic/no-trailing-spaces': ['error', { ignoreComments: true }],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+      '@stylistic/operator-linebreak': ['error', 'after'],
+      '@stylistic/padded-blocks': ['error', 'never'],
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/semi-spacing': ['error', { before: false, after: true }],
+      '@stylistic/space-before-blocks': ['error', 'always'],
+      '@stylistic/space-before-function-paren': ['error', 'never'],
+      '@stylistic/space-in-parens': ['error', 'never'],
+      '@stylistic/space-infix-ops': 'error',
+      '@stylistic/space-unary-ops': ['error', { words: true, nonwords: false }],
+      '@stylistic/spaced-comment': [
+        'error',
+        'always',
+        {
+          line: { markers: ['/'], exceptions: ['-', '+'] },
+          block: { balanced: true, exceptions: ['*'], markers: ['!'] }
+        }
+      ],
+
+      // --- non-stylistic (core) ---
+      'accessor-pairs': 'error',
+      'array-callback-return': 'error',
+      'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
+      'camelcase': ['error', { properties: 'always' }],
+      'consistent-return': 'error',
+      'complexity': ['error', { max: 11 }],
+      'curly': ['error', 'all'],
+      'default-case': 'error',
+      'dot-notation': ['error', { allowKeywords: true }],
+      'eqeqeq': ['error', 'always', { null: 'ignore' }],
+      'guard-for-in': 'error',
+      'handle-callback-err': ['error', '^(err|error)$'],
+      'no-alert': 'warn',
+      'no-array-constructor': 'error',
+      'no-caller': 'error',
+      'no-console': ['error', { allow: ['warn', 'error'] }],
+      'no-eval': 'error',
+      'no-extra-bind': 'error',
+      'no-implied-eval': 'error',
+      'no-iterator': 'error',
+      'no-loop-func': 'error',
+      'no-lone-blocks': 'error',
+      'no-new-func': 'error',
+      'no-new-wrappers': 'error',
+      'no-octal-escape': 'error',
+      'no-plusplus': 'error',
+      'no-proto': 'error',
+      'no-script-url': 'error',
+      'no-useless-catch': 'error',
+      'no-useless-concat': 'error',
+      'no-unneeded-ternary': ['error', { defaultAssignment: false }],
+      'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
+      'no-var': 'error',
+      'no-void': 'error',
+      'no-with': 'error',
+      'object-shorthand': ['error', 'always'],
+      'one-var': ['error', 'never'],
+      'padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: '*', next: 'return' },
+        { blankLine: 'always', prev: '*', next: 'block-like' },
+        { blankLine: 'always', prev: 'block-like', next: '*' },
+        { blankLine: 'always', prev: ['const', 'let'], next: '*' },
+        { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] }
+      ],
+      'prefer-spread': 'error',
+      'prefer-template': 'error',
+      'radix': 'error',
+      'yoda': 'error'
+    }
+  }
+];

@@ -15,10 +15,14 @@ OR
 npm install --save-dev @alexdiliberto/eslint-config
 ```
 
-Then install the required ESLint peer dependency if you don’t already have it:
+This package exports a flat config for ESLint v9+.
+
+Install peer deps:
 
 ```bash
 pnpm add -D eslint
+pnpm add -D eslint @stylistic/eslint-plugin
+
 ```
 
 Note: For Ember projects using [`ember-cli-eslint v5.0.0`](https://github.com/ember-cli/ember-cli-eslint/releases/tag/v5.0.0) or later, peer dependencies are handled for you.

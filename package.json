@@ -7,65 +7,71 @@
     "eslint-config",
     "eslintconfig"
   ],
-  "license": "MIT",
-  "author": "Alex DiLiberto <npm@alexdiliberto.com>",
-  "main": "index.js",
-  "type": "commonjs",
   "homepage": "https://github.com/alexdiliberto/eslint-config#readme",
-  "files": [
-    "index.js",
-    "README.md",
-    "LICENSE"
-  ],
+  "bugs": {
+    "url": "https://github.com/alexdiliberto/eslint-config/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alexdiliberto/eslint-config.git"
   },
-  "bugs": {
-    "url": "https://github.com/alexdiliberto/eslint-config/issues"
+  "license": "MIT",
+  "author": "Alex DiLiberto <npm@alexdiliberto.com>",
+  "type": "commonjs",
+  "exports": {
+    ".": "./flat.js",
+    "./flat": "./flat.js"
   },
+  "main": "flat.js",
+  "files": [
+    "flat.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "changelog": "git-chglog -o CHANGELOG.md",
     "clean": "rm -rf node_modules",
     "commit": "git-cz",
-    "release": "release-it",
     "preinstall": "npx only-allow pnpm",
-    "prepare": "husky install",
     "lint": "eslint . --ext .js --no-error-on-unmatched-pattern",
+    "prepare": "husky install",
+    "release": "release-it",
     "test": "pnpm test:unit:spec",
     "test:fix": "node -e \"console.log('run full test suite; fix assertions are included')\"",
     "test:unit": "tape test/*.js",
     "test:unit:spec": "tape test/*.js | tap-spec",
     "version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md && git add CHANGELOG.md"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-angular": "^16.3.0",
+    "@stylistic/eslint-plugin": "^2.7.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.13.0",
     "husky": "^7.0.4",
     "release-it": "^14.14.3",
     "tap-spec": "^5.0.0",
     "tape": "^5.7.5"
   },
   "peerDependencies": {
-    "eslint": ">= 8.57.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "engines": {
-    "node": ">= 18.8.0"
+    "@stylistic/eslint-plugin": "^2.7.0",
+    "eslint": "^9.0.0"
   },
   "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">= 18.18.0"
+  },
   "volta": {
     "node": "20.19.5",
     "pnpm": "10.20.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

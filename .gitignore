@@ -36,5 +36,4 @@ lib/
 ########################
 
 # Test temp directories
-test/.tmp-consumer/
-
+test/.tmp-consumer-flat/
