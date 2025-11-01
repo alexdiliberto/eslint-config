@@ -29,6 +29,7 @@
     "clean": "rm -rf node_modules",
     "commit": "git-cz",
     "release": "release-it",
+    "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "lint": "eslint . --ext .js --no-error-on-unmatched-pattern",
     "test": "pnpm test:unit:spec",
@@ -62,8 +63,9 @@
   "engines": {
     "node": ">= 18.8.0"
   },
+  "packageManager": "pnpm@10.20.0",
   "volta": {
-    "node": "20.19.5"
-  },
-  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
+    "node": "20.19.5",
+    "pnpm": "10.20.0"
+  }
 }
