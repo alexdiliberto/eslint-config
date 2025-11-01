@@ -1,12 +1,12 @@
 # @alexdiliberto/eslint-config
-[![Build status][travis-badge]][travis-url]
+[![Build status][gh-actions-badge]][gh-actions-url]
 [![Commitizen friendly][cz-badge]][cz-cli-url]
 
-[Shareable config](https://eslint.org/docs/developer-guide/shareable-configs.html) for all of my preferred ESLint rules.
+A [shareable ESLint config](https://eslint.org/docs/developer-guide/shareable-configs.html) containing all of my preferred eslint rules.
 
 ## Installation
 ```bash
-yarn add -D @alexdiliberto/eslint-config
+pnpm add -D @alexdiliberto/eslint-config
 ```
 
 OR
@@ -15,9 +15,13 @@ OR
 npm install --save-dev @alexdiliberto/eslint-config
 ```
 
-Next, install all necessary peer dependencies as notified via console after running the above command.
+Then install the required ESLint peer dependency if you don’t already have it:
 
-Alternatively, if you are using this eslint-config with an Ember CLI project -- simply ensure that the [`ember-cli-eslint`](https://github.com/ember-cli/ember-cli-eslint) addon is installed with version [`>= v5.0.0`](https://github.com/ember-cli/ember-cli-eslint/releases/tag/v5.0.0) and that will take care of the necessary peer dependencies for you automatically.
+```bash
+pnpm add -D eslint
+```
+
+Note: For Ember projects using [`ember-cli-eslint v5.0.0`](https://github.com/ember-cli/ember-cli-eslint/releases/tag/v5.0.0) or later, peer dependencies are handled for you.
 
 ## Usage
 Add `@alexdiliberto` to the `extends` array in your project's `.eslintrc.js` file [as a shorthand](https://eslint.org/docs/developer-guide/shareable-configs#npm-scoped-modules) and these sharable config rules will be automatically consumed by ESLint from within your project.
@@ -28,10 +32,9 @@ Add `@alexdiliberto` to the `extends` array in your project's `.eslintrc.js` fil
 }
 ```
 
-### Using the `@alexdiliberto/eslint-config` config with `eslint:recommended`
+### Using with `eslint:recommended`
 
-To use this config in conjunction with [ESLint's core `eslint:recommended` ruleset](https://eslint.org/docs/rules/), extend them both, making sure to list `@alexdiliberto` last. Please note that I have made it a priority to try not override any of ESLint's recommended rules unless explicitly noted in comments -- this serves only as a precautionary measure to ensure overrides.
-
+To use this config with [ESLint's core `eslint:recommended` ruleset](https://eslint.org/docs/rules/), extend them both, making sure to list `@alexdiliberto` last to override where necessary. 
 ```js
 {
   extends: [
@@ -41,18 +44,20 @@ To use this config in conjunction with [ESLint's core `eslint:recommended` rules
 }
 ```
 
-## Deploy
-Due to an issue with `yarn`, simply use `npm` when running the `deploy` script
+Note: I have prioritized not override any of ESLint's recommended rules unless explicitly noted in comments.
+
+## Release
+Releases are automated using [`release-it`](https://github.com/release-it/release-it). To publish a new version:
 
 ```js
-npm run release
+pnpm release
 ```
 
 ## License
 MIT Copyright (c) [Alex DiLiberto](https://alexdiliberto.com/)
 
 
-[travis-badge]: https://travis-ci.org/alexdiliberto/eslint-config.svg?branch=master
-[travis-url]: https://travis-ci.org/alexdiliberto/eslint-config
+[gh-actions-badge]: https://github.com/alexdiliberto/eslint-config/actions/workflows/ci.yml/badge.svg
+[gh-actions-url]: https://github.com/alexdiliberto/eslint-config/actions/workflows/ci.yml
 [cz-badge]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
 [cz-cli-url]: https://commitizen.github.io/cz-cli/
