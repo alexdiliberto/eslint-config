@@ -5,6 +5,7 @@ const { ESLint } = require('eslint'); // ESLint v9 API
 const test = require('tape');
 const path = require('path');
 const fs = require('fs/promises');
+const { pathToFileURL } = require('url');
 
 // Load the package's flat config (CJS array export)
 const flatConfig = require('../flat.js');
@@ -184,7 +185,8 @@ test('consumer: ESM config can import package', async (t) => {
   await fs.mkdir(tmp, { recursive: true });
   t.teardown(async () => { await fs.rm(tmp, { recursive: true, force: true }); });
 
-  const pkgFlatAbs = path.resolve(path.join(baseDir, '..', 'flat.js')).replace(/\\/g, '/');
+  const pkgFlatAbs = path.resolve(path.join(baseDir, '..', 'flat.js'));
+  const pkgFlatUrl = pathToFileURL(pkgFlatAbs).href;
 
   // ESM project
   await fs.writeFile(path.join(tmp, 'package.json'), JSON.stringify({ type: 'module' }), 'utf8');
@@ -193,7 +195,7 @@ test('consumer: ESM config can import package', async (t) => {
   await fs.writeFile(
     path.join(tmp, 'eslint.config.mjs'),
     `
-    import pkg from '${pkgFlatAbs}';
+    import pkg from '${pkgFlatUrl}';
     export default (pkg && pkg.default) ? pkg.default : pkg;
     `,
     'utf8'
