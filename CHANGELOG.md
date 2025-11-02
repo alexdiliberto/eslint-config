@@ -2,8 +2,26 @@
 ## [Unreleased]
 
 
+<a name="v7.0.1"></a>
+## [v7.0.1] - 2025-11-02
+### Build
+- **renovate:** tighten up renovate package rules for node ([#495](https://github.com/alexdiliberto/eslint-config/issues/495))
+
+### Chore
+- **config:** migrate config .github/renovate.json5 ([#489](https://github.com/alexdiliberto/eslint-config/issues/489))
+- **deps:** update all non-major dependencies ([#493](https://github.com/alexdiliberto/eslint-config/issues/493))
+- **deps:** update dependency tape to ^5.9.0 ([#492](https://github.com/alexdiliberto/eslint-config/issues/492))
+- **deps:** update dependency commitizen to ^4.3.1 ([#490](https://github.com/alexdiliberto/eslint-config/issues/490))
+- **deps:** update actions/upload-artifact action to v5 ([#494](https://github.com/alexdiliberto/eslint-config/issues/494))
+- **deps:** update dependency eslint to ^9.38.0 ([#491](https://github.com/alexdiliberto/eslint-config/issues/491))
+- **deps:** update actions/checkout action to v5 ([#485](https://github.com/alexdiliberto/eslint-config/issues/485))
+
+
 <a name="v7.0.0"></a>
 ## [v7.0.0] - 2025-11-01
+### Chore
+- release v7.0.0
+
 
 <a name="v7.0.0-1"></a>
 ## [v7.0.0-1] - 2025-11-01
@@ -875,7 +893,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.1...HEAD
+[v7.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0...v7.0.1
 [v7.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-1...v7.0.0
 [v7.0.0-1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-0...v7.0.0-1
 [v7.0.0-0]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.1...v7.0.0-0
