@@ -78,7 +78,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 20.19.5
+          # renovate: datasource=node depName=node enabled=false
+          node-version: '20.x'
           check-latest: true # get latest patch
           cache: pnpm # enable pnpm store cache
 
