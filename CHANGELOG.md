@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v7.0.0-1"></a>
+## [v7.0.0-1] - 2025-11-01
+### Bug Fixes
+- **flat.js:** fix `allowTemplateLiterals`
+
+
 <a name="v7.0.0-0"></a>
 ## [v7.0.0-0] - 2025-11-01
 ### Build
@@ -13,7 +19,8 @@
 - **deps:** bump decode-uri-component from 0.2.0 to 0.2.2 ([#390](https://github.com/alexdiliberto/eslint-config/issues/390))
 
 ### Chore
-- **deps:** update node.js to v20.12.2
+- release v7.0.0-0
+- **deps:** update node.js to v20
 - **deps:** update node.js to v20.12.1
 - **deps:** update node.js to v20.12.0
 - **deps:** update yarn to v1.22.22
@@ -31,7 +38,7 @@
 - **deps:** update yarn to v1.22.20
 - **deps:** update dependency eslint to v8.53.0
 - **deps:** update node.js to v20.9.0
-- **deps:** update node.js to v20
+- **deps:** update node.js to v20.12.2
 - **deps:** update actions/setup-node action to v4
 - **deps:** update dependency tape to ^5.7.2
 - **deps:** update dependency eslint to v8.52.0
@@ -862,7 +869,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-0...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-1...HEAD
+[v7.0.0-1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-0...v7.0.0-1
 [v7.0.0-0]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.1...v7.0.0-0
 [v6.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.0...v6.0.1
 [v6.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v5.0.0...v6.0.0
