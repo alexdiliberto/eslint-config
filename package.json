@@ -24,7 +24,6 @@
     "./flat": "./flat.js"
   },
   "main": "flat.js",
-  "types": false,
   "files": [
     "flat.js",
     "README.md",
