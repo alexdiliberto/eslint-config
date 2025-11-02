@@ -58,7 +58,7 @@
     "husky": "^9.1.7",
     "release-it": "^19.0.5",
     "tap-spec": "^5.0.0",
-    "tape": "^5.7.5"
+    "tape": "^5.9.0"
   },
   "peerDependencies": {
     "@stylistic/eslint-plugin": "^5.0.0",
