@@ -2,10 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v7.0.0"></a>
+## [v7.0.0] - 2025-11-01
+
 <a name="v7.0.0-1"></a>
 ## [v7.0.0-1] - 2025-11-01
 ### Bug Fixes
 - **flat.js:** fix `allowTemplateLiterals`
+
+### Chore
+- release v7.0.0-1
 
 
 <a name="v7.0.0-0"></a>
@@ -869,7 +875,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-1...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0...HEAD
+[v7.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-1...v7.0.0
 [v7.0.0-1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-0...v7.0.0-1
 [v7.0.0-0]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.1...v7.0.0-0
 [v6.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.0...v6.0.1
