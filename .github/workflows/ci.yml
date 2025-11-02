@@ -1,35 +1,114 @@
-name: Node Cross-platform CI
+name: Node Cross-Platform CI
 
 on:
   pull_request:
   push:
     # filtering branches here prevents duplicate builds from pull_request and push
     branches:
-      - master
+      - main
   # early issue detection: run CI weekly on Sundays
   schedule:
   - cron:  '0 6 * * 0'
+
+# cancel older runs for the same branch/PR when a new commit arrives
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# principle of least privilege for GITHUB_TOKEN
+permissions:
+  contents: read
 
 env:
   CI: true
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
-
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        node-version: [12.x, 14.x]
-
+        os: [ubuntu-latest, windows-latest, macos-14]
+        node-version: [20, 22, 24]
+    defaults:
+      run:
+        shell: bash
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: yarn install and test
-      run: |
-        yarn install
-        yarn test
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
+          run_install: false
+
+      - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          check-latest: true # get latest patch
+          cache: pnpm # enable pnpm store cache
+
+      - name: Verify Node and PNPM Versions
+        run: |
+          node -v
+          pnpm -v
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm test
+
+  pack-dry-run:
+    needs: build
+    if: ${{ success() && (github.event_name == 'pull_request' || github.ref == 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          check-latest: true # get latest patch
+          cache: pnpm # enable pnpm store cache
+
+      - name: Install Dependencies
+        # Prod deps not needed for packing, but safe
+        run: pnpm install --frozen-lockfile
+
+      # Create the Tarball
+      - name: Pack Package
+        id: pack
+        shell: bash
+        run: |
+          pnpm pack --pack-destination dist
+          # derive filename (pnpm prints it, but we compute robustly too)
+          TARBALL="$(node -e "const p=require('./package.json'); const n=p.name.replace('@','').replace('/','-'); console.log(\`dist/\${n}-\${p.version}.tgz\`)")"
+          echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
+
+      - name: List Tarball Contents
+        run: tar -tzf "${{ steps.pack.outputs.tarball }}"
+
+      - name: Publint
+        run: pnpm dlx publint@latest "${{ steps.pack.outputs.tarball }}"
+
+      - name: npm publish --dry-run (summary)
+        run: npm publish --dry-run
+
+      # Make the tarball downloadable from the CI page
+      - name: Upload tarball artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-tarball
+          path: ${{ steps.pack.outputs.tarball }}
+          if-no-files-found: error

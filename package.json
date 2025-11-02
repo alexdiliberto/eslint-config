@@ -7,54 +7,72 @@
     "eslint-config",
     "eslintconfig"
   ],
-  "license": "MIT",
-  "author": "Alex DiLiberto <npm@alexdiliberto.com>",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexdiliberto/eslint-config.git"
-  },
+  "homepage": "https://github.com/alexdiliberto/eslint-config#readme",
   "bugs": {
     "url": "https://github.com/alexdiliberto/eslint-config/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexdiliberto/eslint-config.git"
+  },
+  "license": "MIT",
+  "author": "Alex DiLiberto <npm@alexdiliberto.com>",
+  "sideEffects": false,
+  "type": "commonjs",
+  "exports": {
+    ".": "./flat.js",
+    "./flat": "./flat.js"
+  },
+  "main": "flat.js",
+  "files": [
+    "flat.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "changelog": "git-chglog -o CHANGELOG.md",
     "clean": "rm -rf node_modules",
     "commit": "git-cz",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint . --ext .js --no-error-on-unmatched-pattern",
+    "prepare": "husky",
     "release": "release-it",
-    "prepare": "husky install",
-    "test": "yarn test:unit:spec",
+    "test": "pnpm test:unit:spec",
+    "test:fix": "node -e \"console.log('run full test suite; fix assertions are included')\"",
     "test:unit": "tape test/*.js",
     "test:unit:spec": "tape test/*.js | tap-spec",
     "version": "git-chglog --next-tag v$npm_package_version -o CHANGELOG.md && git add CHANGELOG.md"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^16.3.0",
-    "@commitlint/config-angular": "^16.3.0",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.57.0",
-    "husky": "^7.0.4",
-    "release-it": "^14.14.3",
-    "tap-spec": "^5.0.0",
-    "tape": "^5.7.5"
-  },
-  "peerDependencies": {
-    "eslint": ">= 8.57.0"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@stylistic/eslint-plugin": "^5.5.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.13.0",
+    "husky": "^9.1.7",
+    "release-it": "^19.0.5",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.7.5"
+  },
+  "peerDependencies": {
+    "@stylistic/eslint-plugin": "^5.0.0",
+    "eslint": "^9.0.0"
+  },
+  "packageManager": "pnpm@10.20.0",
   "engines": {
-    "node": "12.* || >= 14"
+    "node": ">=20.9.0"
   },
   "volta": {
-    "node": "20.12.2",
-    "yarn": "1.22.22"
+    "node": "24.11.0",
+    "pnpm": "10.20.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,10 +1,10 @@
 {
   "hooks": {
-    "before:init": ["yarn test"]
+    "before:init": ["pnpm test"]
   },
   "git": {
     "tagName": "v${version}",
-    "commitMessage": "v${version}"
+    "commitMessage": "chore: release v${version}"
   },
   "github": {
     "release": true,
