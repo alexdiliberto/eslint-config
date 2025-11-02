@@ -78,7 +78,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 20.19.5
           check-latest: true # get latest patch
           cache: pnpm # enable pnpm store cache
 
