@@ -100,7 +100,7 @@ jobs:
         run: tar -tzf "${{ steps.pack.outputs.tarball }}"
 
       - name: Publint
-        run: pnpm dlx publint@latest .
+        run: pnpm dlx publint@latest "${{ steps.pack.outputs.tarball }}"
 
       - name: npm publish --dry-run (summary)
         run: npm publish --dry-run
