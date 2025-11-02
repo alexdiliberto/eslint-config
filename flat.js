@@ -39,7 +39,7 @@ module.exports = [
       '@stylistic/object-curly-spacing': ['error', 'always'],
       '@stylistic/operator-linebreak': ['error', 'after'],
       '@stylistic/padded-blocks': ['error', 'never'],
-      '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: 'always' }],
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/semi-spacing': ['error', { before: false, after: true }],
       '@stylistic/space-before-blocks': ['error', 'always'],
