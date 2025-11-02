@@ -28,6 +28,16 @@
   },
   packageRules: [
     {
+      matchManagers: ['github-actions'],
+      matchDatasources: ['node'],
+      enabled: false
+    },
+    {
+      matchManagers: ['npm'],
+      matchDepNames: ['node'],
+      enabled: false
+    }
+    {
       matchDepTypes: [
         'devDependencies',
       ],
