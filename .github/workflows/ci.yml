@@ -145,10 +145,8 @@ jobs:
         id: pack
         run: |
           pnpm install --frozen-lockfile
-          pnpm pack --pack-destination dist
-          TARBALL="$(node -e 'const p = require(\"./package.json\"); \
-            const n = p.name.replace(/^@/, \"\").replace(\"/\", \"-\"); \
-            console.log(\"dist/\" + n + \"-\" + p.version + \".tgz\");')"
+          # capture the tarball path printed by pnpm on the last line
+          TARBALL="$(pnpm pack --pack-destination dist | tail -n1 | tr -d '\n')"
           echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
 
       - name: CJS Consumer
