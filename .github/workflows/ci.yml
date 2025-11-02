@@ -159,6 +159,7 @@ jobs:
           function foo() {
             return 1;
           }
+
           foo();
           JS
 
@@ -193,6 +194,7 @@ jobs:
           function foo() {
             return 1;
           }
+
           foo();
           JS
 
