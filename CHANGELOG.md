@@ -2,6 +2,192 @@
 ## [Unreleased]
 
 
+<a name="v7.0.0-0"></a>
+## [v7.0.0-0] - 2025-11-01
+### Build
+- **.release-it.json:** update with clear defaults
+- **deps:** bump vm2 from 3.9.9 to 3.9.17 ([#417](https://github.com/alexdiliberto/eslint-config/issues/417))
+- **deps:** bump minimatch from 3.0.4 to 3.1.2 ([#391](https://github.com/alexdiliberto/eslint-config/issues/391))
+- **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([#403](https://github.com/alexdiliberto/eslint-config/issues/403))
+- **deps:** bump node-fetch from 2.6.1 to 2.6.8 ([#399](https://github.com/alexdiliberto/eslint-config/issues/399))
+- **deps:** bump decode-uri-component from 0.2.0 to 0.2.2 ([#390](https://github.com/alexdiliberto/eslint-config/issues/390))
+
+### Chore
+- **deps:** update node.js to v20.12.2
+- **deps:** update node.js to v20.12.1
+- **deps:** update node.js to v20.12.0
+- **deps:** update yarn to v1.22.22
+- **deps:** update dependency eslint to v8.57.0
+- **deps:** update dependency tape to ^5.7.5
+- **deps:** update node.js to v20.11.1
+- **deps:** update dependency tape to ^5.7.4
+- **deps:** update node.js to v20.11.0
+- **deps:** update dependency tape to ^5.7.3
+- **deps:** update dependency eslint to v8.56.0
+- **deps:** update dependency eslint to v8.55.0
+- **deps:** update node.js to v20.10.0
+- **deps:** update dependency eslint to v8.54.0
+- **deps:** update yarn to v1.22.21
+- **deps:** update yarn to v1.22.20
+- **deps:** update dependency eslint to v8.53.0
+- **deps:** update node.js to v20.9.0
+- **deps:** update node.js to v20
+- **deps:** update actions/setup-node action to v4
+- **deps:** update dependency tape to ^5.7.2
+- **deps:** update dependency eslint to v8.52.0
+- **deps:** update node.js to v18.18.2
+- **deps:** update dependency tape to ^5.7.1
+- **deps:** update node.js to v18.18.1
+- **deps:** update dependency eslint to v8.51.0
+- **deps:** update dependency eslint to v8.50.0
+- **deps:** update node.js to v18.18.0
+- **deps:** update dependency tape to ^5.7.0
+- **deps:** update dependency eslint to v8.49.0
+- **deps:** update actions/checkout action to v4
+- **deps:** update dependency eslint to v8.48.0
+- **deps:** update dependency eslint to v8.47.0
+- **deps:** update node.js to v18.17.1
+- **deps:** update dependency eslint to v8.46.0
+- **deps:** update dependency tape to ^5.6.6
+- **deps:** update node.js to v18.17.0
+- **deps:** update dependency eslint to v8.45.0
+- **deps:** update dependency tape to ^5.6.5
+- **deps:** update dependency tape to ^5.6.4
+- **deps:** update dependency eslint to v8.44.0
+- **deps:** update node.js to v18.16.1
+- **deps:** update dependency eslint to v8.43.0
+- **deps:** update dependency eslint to v8.42.0
+- **deps:** update dependency eslint to v8.41.0
+- **deps:** update dependency eslint to v8.40.0
+- **deps:** bump qs from 6.10.1 to 6.11.1 ([#410](https://github.com/alexdiliberto/eslint-config/issues/410))
+- **deps:** bump vm2 from 3.9.9 to 3.9.16 ([#414](https://github.com/alexdiliberto/eslint-config/issues/414))
+- **deps:** update dependency eslint to v8.39.0
+- **deps:** update node.js to v18.16.0
+- **deps:** update dependency eslint to v8.38.0
+- **deps:** update dependency eslint to v8.37.0
+- **deps:** update dependency eslint to v8.36.0
+- **deps:** update node.js to v18.15.0
+- **deps:** update dependency eslint to v8.35.0
+- **deps:** update node.js to v18.14.2
+- **deps:** update node.js to v18.14.1
+- **deps:** update dependency eslint to v8.34.0
+- **deps:** update node.js to v18.14.0
+- **deps:** update dependency eslint to v8.33.0
+- **deps:** update dependency commitizen to ^4.3.0
+- **deps:** update dependency tape to ^5.6.3
+- **deps:** update dependency eslint to v8.32.0
+- **deps:** update node.js to v18.13.0
+- **deps:** update dependency eslint to v8.31.0
+- **deps:** update dependency eslint to v8.30.0
+- **deps:** update dependency commitizen to ^4.2.6
+- **deps:** update dependency eslint to v8.29.0
+- **deps:** update dependency eslint to v8.28.0
+- **deps:** update node.js to v18.12.1
+- **deps:** update dependency eslint to v8.27.0
+- **deps:** update node.js to v18
+- **deps:** update dependency eslint to v8.26.0
+- **deps:** update node.js to v16.18.0
+- **deps:** update dependency eslint to v8.25.0
+- **deps:** update dependency eslint to v8.24.0
+- **deps:** update node.js to v16.17.1
+- **deps:** update dependency tape to ^5.6.1
+- **deps:** update dependency eslint to v8.23.1
+- **deps:** update dependency eslint to v8.23.0
+- **deps:** update dependency tape to ^5.6.0
+- **deps:** update node.js to v16.17.0
+- **deps:** update dependency eslint to v8.22.0
+- **deps:** update dependency eslint to v8.21.0
+- **deps:** update dependency commitizen to ^4.2.5
+- **deps:** update dependency eslint to v8.20.0
+- **deps:** update node.js to v16.16.0
+- **deps:** update dependency eslint to v8.19.0
+- **deps:** roll back node.js to 16.15.0
+- **deps:** update dependency eslint to v8.18.0
+- **deps:** update yarn to v1.22.19
+- **deps:** update dependency eslint to v8.17.0
+- **deps:** update node.js to v16.15.1
+- **deps:** update dependency eslint to v8.16.0
+- **deps:** update commitlint monorepo to ^16.3.0
+- **deps:** update dependency eslint to v8.15.0
+- **deps:** update dependency release-it to ^14.14.3
+- **deps:** update commitlint monorepo to ^16.2.4
+- **deps:** update node.js to v16.15.0
+- **deps:** update dependency eslint to v8.14.0
+- **deps:** update dependency release-it to ^14.14.2
+- **deps:** update dependency release-it to ^14.14.1
+- **deps:** update dependency eslint to v8.13.0
+- **deps:** update dependency tape to ^5.5.3
+- **deps:** update dependency release-it to ^14.14.0
+- **deps:** update dependency eslint to v8.12.0
+- **deps:** update dependency release-it to ^14.13.1
+- **deps:** update dependency release-it to ^14.13.0
+- **deps:** update yarn to v1.22.18
+- **deps:** update node.js to v16.14.2
+- **deps:** update node.js to v16.14.1
+- **deps:** update commitlint monorepo to ^16.2.3
+- **deps:** update actions/checkout action to v3
+- **deps:** update dependency eslint to v8.11.0
+- **deps:** update actions/setup-node action to v3
+- **deps:** update dependency eslint to v8.10.0
+- **deps:** update dependency release-it to ^14.12.5
+- **deps:** update commitlint monorepo to ^16.2.1
+- **deps:** update dependency tape to ^5.5.2
+- **deps:** update dependency eslint to v8.9.0
+- **deps:** update dependency tape to ^5.5.1
+- **deps:** update node.js to v16.14.0
+- **deps:** update dependency eslint to v8.8.0
+- **deps:** update dependency tape to ^5.5.0
+- **deps:** update dependency release-it to ^14.12.4
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^16.1.0
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^16.0.3
+- **deps:** update dependency release-it to ^14.12.3
+- **deps:** update dependency tape to ^5.4.1
+- **deps:** update dependency eslint to v8.7.0
+- **deps:** update dependency release-it to ^14.12.2
+- **deps:** update node.js to v16.13.2
+- **deps:** update dependency release-it to ^14.12.1
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^16.0.2
+- **deps:** update dependency eslint to v8.6.0
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^16.0.1
+- **deps:** update commitlint monorepo to v16
+- **deps:** update dependency tape to ^5.4.0
+- **deps:** update dependency eslint to v8.5.0
+- **deps:** update dependency eslint to v8.4.1
+- **deps:** update dependency eslint to v8.4.0
+- **deps:** update node.js to v16.13.1
+- **deps:** update dependency eslint to v8.3.0
+- **deps:** update dependency release-it to ^14.11.8
+- **deps:** update commitlint monorepo to v15
+- **deps:** update dependency tape to ^5.3.2
+- **deps:** update dependency release-it to ^14.11.7
+- **deps:** update dependency eslint to v8.2.0
+- **deps:** update commitlint monorepo to v14
+- **deps:** update node.js to v16.13.0
+- **deps:** update node.js to v16
+- **deps:** update dependency eslint to v8.1.0
+- **deps:** update dependency husky to ^7.0.4
+
+### BREAKING CHANGE
+
+eslint version
+
+* test: fix windows errors
+
+* ci: pack-dry-run ci.yml update
+
+* fix(package.json): add missing fields
+
+* fix(more fixes): updates
+
+* build(node): drop node 18 support
+
+* ci(package.json): remove `types` field in packages.json
+
+* ci(ci.yml): make sure to only publint the actual packed tarball
+
+* build(node): updating local node to v24
+
+
 <a name="v6.0.1"></a>
 ## [v6.0.1] - 2021-10-16
 ### Chore
@@ -676,7 +862,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.1...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-0...HEAD
+[v7.0.0-0]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.1...v7.0.0-0
 [v6.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v6.0.0...v6.0.1
 [v6.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v5.0.0...v6.0.0
 [v5.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v4.2.0...v5.0.0
