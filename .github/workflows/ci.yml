@@ -146,7 +146,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           # capture the tarball path printed by pnpm on the last line
-          TARBALL="$(pnpm pack --pack-destination dist | tail -n1 | tr -d '\n')"
+          TARBALL="$(pnpm pack --pack-destination dist | tail -n1 | xargs realpath)"
           echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
           # log for debugging
           echo "::notice title=pack::Tarball => $TARBALL"
