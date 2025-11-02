@@ -69,7 +69,7 @@ test('guard: no core stylistic rule IDs present', (t) => {
   const legacyStylistic = new Set([
     'array-bracket-spacing','arrow-parens','arrow-spacing','block-spacing',
     'brace-style','comma-dangle','comma-spacing','comma-style','dot-location',
-    'eol-last','func-call-spacing','generator-star-spacing','indent','key-spacing',
+    'eol-last','function-call-spacing','generator-star-spacing','indent','key-spacing',
     'keyword-spacing','max-statements-per-line','no-confusing-arrow','no-floating-decimal',
     'no-multi-spaces','no-multiple-empty-lines','no-trailing-spaces','object-curly-spacing',
     'operator-linebreak','padded-blocks','quotes','semi','semi-spacing',

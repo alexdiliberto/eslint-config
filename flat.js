@@ -3,16 +3,18 @@
 
 const stylistic = require('@stylistic/eslint-plugin');
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+/** @type {import('eslint').FlatConfig[]} */
 module.exports = [
   {
     plugins: { '@stylistic': stylistic },
+
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'script'
+      sourceType: 'script',
     },
+
     rules: {
-      // --- stylistic (migrated) ---
+      // --- stylistic v5 (use @stylistic/* ids) ---
       '@stylistic/array-bracket-spacing': ['error', 'never'],
       '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/arrow-spacing': ['error', { before: true, after: true }],
@@ -23,7 +25,7 @@ module.exports = [
       '@stylistic/comma-style': ['error', 'last'],
       '@stylistic/dot-location': ['error', 'property'],
       '@stylistic/eol-last': ['error', 'always'],
-      '@stylistic/func-call-spacing': ['error', 'never'],
+      '@stylistic/function-call-spacing': ['error', 'never'],
       '@stylistic/generator-star-spacing': ['error', 'both'],
       '@stylistic/indent': ['error', 2, { SwitchCase: 1 }],
       '@stylistic/key-spacing': ['error', { beforeColon: false, afterColon: true, mode: 'minimum' }],
@@ -50,8 +52,8 @@ module.exports = [
         'always',
         {
           line: { markers: ['/'], exceptions: ['-', '+'] },
-          block: { balanced: true, exceptions: ['*'], markers: ['!'] }
-        }
+          block: { balanced: true, exceptions: ['*'], markers: ['!'] },
+        },
       ],
 
       // --- non-stylistic (core) ---
@@ -98,12 +100,12 @@ module.exports = [
         { blankLine: 'always', prev: '*', next: 'block-like' },
         { blankLine: 'always', prev: 'block-like', next: '*' },
         { blankLine: 'always', prev: ['const', 'let'], next: '*' },
-        { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] }
+        { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
       ],
       'prefer-spread': 'error',
       'prefer-template': 'error',
       'radix': 'error',
-      'yoda': 'error'
-    }
-  }
+      'yoda': 'error',
+    },
+  },
 ];

@@ -36,7 +36,7 @@
     "commit": "git-cz",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint . --ext .js --no-error-on-unmatched-pattern",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "release-it",
     "test": "pnpm test:unit:spec",
     "test:fix": "node -e \"console.log('run full test suite; fix assertions are included')\"",
@@ -50,19 +50,19 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.3.0",
-    "@commitlint/config-angular": "^16.3.0",
-    "@stylistic/eslint-plugin": "^2.7.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@stylistic/eslint-plugin": "^5.5.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.13.0",
-    "husky": "^7.0.4",
-    "release-it": "^14.14.3",
+    "husky": "^9.1.7",
+    "release-it": "^19.0.5",
     "tap-spec": "^5.0.0",
     "tape": "^5.7.5"
   },
   "peerDependencies": {
-    "@stylistic/eslint-plugin": "^2.7.0",
+    "@stylistic/eslint-plugin": "^5.0.0",
     "eslint": "^9.0.0"
   },
   "packageManager": "pnpm@10.20.0",

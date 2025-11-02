@@ -1,5 +1,1 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-# Use the repo's commitlint (no global installs)
-pnpm exec commitlint --edit "$1"
+pnpm commitlint --edit "$1"

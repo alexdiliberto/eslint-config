@@ -14,7 +14,7 @@ function aFunction ( param1 , param2 ){  // space-before-function-paren, space-i
     // prefer-template, quotes, space-infix-ops, extra spaces; missing semi
     str = str  +  " world"
 
-    // func-call-spacing, space before dot, space-in-parens, quotes; missing semi
+    // function-call-spacing, space before dot, space-in-parens, quotes; missing semi
     const joined = arr .join( ',' )
 
     // Use both obj and joined so no-unused-vars doesn't fire
