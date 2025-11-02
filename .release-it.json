@@ -1,10 +1,13 @@
 {
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
   "hooks": {
     "before:init": ["pnpm test"]
   },
   "git": {
     "tagName": "v${version}",
-    "commitMessage": "chore: release v${version}"
+    "commitMessage": "chore: release v${version}",
+    "requireCleanWorkingDir": true,
+    "requireUpstream": true
   },
   "github": {
     "release": true,

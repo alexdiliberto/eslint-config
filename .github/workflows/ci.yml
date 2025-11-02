@@ -89,7 +89,6 @@ jobs:
       # Create the Tarball
       - name: Pack Package
         id: pack
-        shell: bash
         run: |
           pnpm pack --pack-destination dist
           # derive filename (pnpm prints it, but we compute robustly too)
@@ -112,3 +111,105 @@ jobs:
           name: package-tarball
           path: ${{ steps.pack.outputs.tarball }}
           if-no-files-found: error
+
+  consumer-smoke:
+    needs: pack-dry-run
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22, 24]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          check-latest: true # get latest patch
+          cache: pnpm # enable pnpm store cache
+
+      - name: Show Versions
+        run: |
+          node -v
+          pnpm -v
+          npx eslint -v
+
+      - name: Pack
+        id: pack
+        run: |
+          pnpm install --frozen-lockfile
+          # capture the tarball path printed by pnpm on the last line
+          TARBALL="$(pnpm pack --pack-destination dist | tail -n1 | xargs realpath)"
+          echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
+          # log for debugging
+          echo "::notice title=pack::Tarball => $TARBALL"
+
+      - name: CJS Consumer
+        run: |
+          set -euo pipefail
+          mkdir smoke-cjs && cd smoke-cjs && npm init -y >/dev/null
+          pnpm add -D eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
+
+          cat > sample.js <<'JS'
+          function foo() {
+            return 1;
+          }
+
+          foo();
+          JS
+
+          cat > invalid.js <<'JS'
+          function  bar(){return 2 } bar()
+          JS
+
+          cat > eslint.config.js <<'JS'
+          'use strict';
+          const cfgOrPromise = require('@alexdiliberto/eslint-config');
+          module.exports = (async () => {
+            const cfg = (cfgOrPromise?.then ? await cfgOrPromise : (cfgOrPromise?.default ?? cfgOrPromise));
+            if (!Array.isArray(cfg)) throw new Error('Expected flat config array');
+            return cfg;
+          })();
+          JS
+
+          npx eslint sample.js --max-warnings=0
+          (npx eslint invalid.js && exit 1) || true
+          npx eslint invalid.js --fix
+          npx eslint invalid.js --max-warnings=0
+
+      - name: ESM Consumer
+        run: |
+          set -euo pipefail
+          mkdir smoke-esm && cd smoke-esm && npm init -y >/dev/null
+          node -e "const fs=require('fs');const p=require('./package.json');p.type='module';fs.writeFileSync('package.json',JSON.stringify(p,null,2));"
+
+          pnpm add -D eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
+
+          cat > sample.js <<'JS'
+          function foo() {
+            return 1;
+          }
+
+          foo();
+          JS
+
+          cat > invalid.js <<'JS'
+          function  bar(){return 2 } bar()
+          JS
+
+          cat > eslint.config.mjs <<'JS'
+          import cfg from '@alexdiliberto/eslint-config';
+          export default (Array.isArray(cfg) ? cfg : (cfg?.default ?? cfg));
+          JS
+
+          npx eslint sample.js --max-warnings=0
+          (npx eslint invalid.js && exit 1) || true
+          npx eslint invalid.js --fix
+          npx eslint invalid.js --max-warnings=0

@@ -4,6 +4,7 @@
 
 A [shareable ESLint config](https://eslint.org/docs/developer-guide/shareable-configs.html) containing all of my preferred eslint rules.
 
+
 ## Installation
 ```bash
 pnpm add -D @alexdiliberto/eslint-config
@@ -15,40 +16,61 @@ OR
 npm install --save-dev @alexdiliberto/eslint-config
 ```
 
-This package exports a flat config for ESLint v9+.
+This package exports a **Flat Config** for ESLint v9+.
 
-Install peer deps:
+Install peer dependencies:
 
 ```bash
-pnpm add -D eslint
 pnpm add -D eslint @stylistic/eslint-plugin
-
 ```
 
-Note: For Ember projects using [`ember-cli-eslint v5.0.0`](https://github.com/ember-cli/ember-cli-eslint/releases/tag/v5.0.0) or later, peer dependencies are handled for you.
 
-## Usage
-Add `@alexdiliberto` to the `extends` array in your project's `.eslintrc.js` file [as a shorthand](https://eslint.org/docs/developer-guide/shareable-configs#npm-scoped-modules) and these sharable config rules will be automatically consumed by ESLint from within your project.
+## Usage (ESLint v9 Flat Config)
+
+### CommonJS
+
+Create `eslint.config.js` in the root of your project:
 
 ```js
-{
-  extends: ['@alexdiliberto']
-}
+'use strict';
+const cfgOrPromise = require('@alexdiliberto/eslint-config');
+
+module.exports = (async () => {
+  const cfg = (cfgOrPromise?.then ? await cfgOrPromise : (cfgOrPromise?.default ?? cfgOrPromise));
+  if (!Array.isArray(cfg)) throw new Error('Expected flat config array');
+  return cfg;
+})();
 ```
+
+### ECMAScript Modules
+
+Create `eslint.config.mjs` in the root of your project:
+
+```js
+import cfg from '@alexdiliberto/eslint-config';
+
+export default (Array.isArray(cfg) ? cfg : (cfg?.default ?? cfg));
+```
+
+**Notes:**
+- This config replaces `.eslintrc.*` and works with ESLint’s new Flat Config format.
+- Requiring async support (via `await`) allows future extensibility, e.g. dynamic imports or file systems reads.
+- Valid for both Node ≥20.9 and in ESM environments.
 
 ### Using with `eslint:recommended`
 
-To use this config with [ESLint's core `eslint:recommended` ruleset](https://eslint.org/docs/rules/), extend them both, making sure to list `@alexdiliberto` last to override where necessary. 
+You can extend both rule sets, making sure to include this config last:
+
 ```js
-{
-  extends: [
-    'eslint:recommended',
-    '@alexdiliberto'
-  ]
-}
+export default [
+  {
+    extends: ['eslint:recommended'],
+  },
+  ...yourOtherConfigs,
+  ...require('@alexdiliberto/eslint-config')
+];
 ```
 
-Note: I have prioritized not override any of ESLint's recommended rules unless explicitly noted in comments.
 
 ## Release
 Releases are automated using [`release-it`](https://github.com/release-it/release-it). To publish a new version:
