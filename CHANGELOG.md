@@ -2,12 +2,27 @@
 ## [Unreleased]
 
 
+<a name="v7.0.2"></a>
+## [v7.0.2] - 2025-11-14
+### CI
+- fix formatting in renovate.json5
+
+### Chore
+- **config:** migrate config .github/renovate.json5 ([#500](https://github.com/alexdiliberto/eslint-config/issues/500))
+- **deps:** update all non-major dependencies ([#504](https://github.com/alexdiliberto/eslint-config/issues/504))
+- **deps:** lock file maintenance ([#505](https://github.com/alexdiliberto/eslint-config/issues/505))
+- **deps:** update dependency release-it to ^19.0.6 ([#503](https://github.com/alexdiliberto/eslint-config/issues/503))
+- **deps:** update dependency eslint to ^9.39.1 ([#502](https://github.com/alexdiliberto/eslint-config/issues/502))
+- **deps:** lock file maintenance ([#501](https://github.com/alexdiliberto/eslint-config/issues/501))
+
+
 <a name="v7.0.1"></a>
 ## [v7.0.1] - 2025-11-02
 ### Build
 - **renovate:** tighten up renovate package rules for node ([#495](https://github.com/alexdiliberto/eslint-config/issues/495))
 
 ### Chore
+- release v7.0.1
 - **config:** migrate config .github/renovate.json5 ([#489](https://github.com/alexdiliberto/eslint-config/issues/489))
 - **deps:** update all non-major dependencies ([#493](https://github.com/alexdiliberto/eslint-config/issues/493))
 - **deps:** update dependency tape to ^5.9.0 ([#492](https://github.com/alexdiliberto/eslint-config/issues/492))
@@ -893,7 +908,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.1...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.2...HEAD
+[v7.0.2]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.1...v7.0.2
 [v7.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0...v7.0.1
 [v7.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-1...v7.0.0
 [v7.0.0-1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-0...v7.0.0-1
