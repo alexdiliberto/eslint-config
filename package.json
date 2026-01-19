@@ -49,14 +49,14 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
+    "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@stylistic/eslint-plugin": "^5.7.0",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
-    "release-it": "^19.0.6",
+    "release-it": "^19.2.3",
     "tap-spec": "^5.0.0",
     "tape": "^5.9.0"
   },
