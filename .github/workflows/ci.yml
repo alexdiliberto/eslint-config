@@ -107,7 +107,7 @@ jobs:
 
       # Make the tarball downloadable from the CI page
       - name: Upload tarball artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: package-tarball
           path: ${{ steps.pack.outputs.tarball }}
