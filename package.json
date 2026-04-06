@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.4.4",
+    "@commitlint/config-conventional": "^20.5.0",
     "@stylistic/eslint-plugin": "^5.10.0",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -64,13 +64,13 @@
     "@stylistic/eslint-plugin": "^5.0.0",
     "eslint": "^9.0.0"
   },
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": ">=20.9.0 || ^22 || ^24"
   },
   "volta": {
     "node": "24.11.0",
-    "pnpm": "10.32.1"
+    "pnpm": "10.33.0"
   },
   "publishConfig": {
     "access": "public"
