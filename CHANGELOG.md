@@ -2,12 +2,57 @@
 ## [Unreleased]
 
 
+<a name="v8.0.0"></a>
+## [v8.0.0] - 2026-05-11
+### Docs
+- update README and add blank .npmrc template
+
+
+<a name="v7.0.3"></a>
+## [v7.0.3] - 2026-05-11
+### Chore
+- release v7.0.3
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^20.4.4 ([#522](https://github.com/alexdiliberto/eslint-config/issues/522))
+- **deps:** update pnpm to v10.33.4 ([#536](https://github.com/alexdiliberto/eslint-config/issues/536))
+- **deps:** update dependency eslint to ^10.3.0 ([#535](https://github.com/alexdiliberto/eslint-config/issues/535))
+- **deps:** lock file maintenance ([#534](https://github.com/alexdiliberto/eslint-config/issues/534))
+- **deps:** update pnpm/action-setup action to v6 ([#533](https://github.com/alexdiliberto/eslint-config/issues/533))
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/config-conventional to ^20.5.3 ([#531](https://github.com/alexdiliberto/eslint-config/issues/531))
+- **deps:** update release & commit tooling ([#532](https://github.com/alexdiliberto/eslint-config/issues/532))
+- **deps:** update pnpm to v10.33.2 ([#530](https://github.com/alexdiliberto/eslint-config/issues/530))
+- **deps:** update dependency eslint to ^10.2.1 ([#529](https://github.com/alexdiliberto/eslint-config/issues/529))
+- **deps:** update dependency eslint to v10 ([#527](https://github.com/alexdiliberto/eslint-config/issues/527))
+- **deps:** update dependency release-it to v20 ([#528](https://github.com/alexdiliberto/eslint-config/issues/528))
+- **deps:** update actions/upload-artifact action to v7 ([#526](https://github.com/alexdiliberto/eslint-config/issues/526))
+- **deps:** update dependency eslint to ^9.39.4 ([#525](https://github.com/alexdiliberto/eslint-config/issues/525))
+- **deps:** update all non-major dependencies ([#523](https://github.com/alexdiliberto/eslint-config/issues/523))
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^20.5.0 ([#524](https://github.com/alexdiliberto/eslint-config/issues/524))
+- **deps:** lock file maintenance ([#538](https://github.com/alexdiliberto/eslint-config/issues/538))
+- **deps:** update all non-major dependencies ([#521](https://github.com/alexdiliberto/eslint-config/issues/521))
+- **deps:** update all non-major dependencies ([#519](https://github.com/alexdiliberto/eslint-config/issues/519))
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^20.4.3 ([#520](https://github.com/alexdiliberto/eslint-config/issues/520))
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^20.4.1 ([#518](https://github.com/alexdiliberto/eslint-config/issues/518))
+- **deps:** update all non-major dependencies ([#517](https://github.com/alexdiliberto/eslint-config/issues/517))
+- **deps:** update pnpm to v10.28.1 ([#516](https://github.com/alexdiliberto/eslint-config/issues/516))
+- **deps:** update dependency release-it to ^19.2.4 ([#515](https://github.com/alexdiliberto/eslint-config/issues/515))
+- **deps:** update release & commit tooling ([#514](https://github.com/alexdiliberto/eslint-config/issues/514))
+- **deps:** update all non-major dependencies ([#513](https://github.com/alexdiliberto/eslint-config/issues/513))
+- **deps:** update all non-major dependencies ([#512](https://github.com/alexdiliberto/eslint-config/issues/512))
+- **deps:** update dependency eslint to ^9.39.2 ([#511](https://github.com/alexdiliberto/eslint-config/issues/511))
+- **deps:** lock file maintenance ([#510](https://github.com/alexdiliberto/eslint-config/issues/510))
+- **deps:** update actions/checkout action to v6 ([#509](https://github.com/alexdiliberto/eslint-config/issues/509))
+- **deps:** update dependency [@stylistic](https://github.com/stylistic)/eslint-plugin to ^5.6.1 ([#508](https://github.com/alexdiliberto/eslint-config/issues/508))
+- **deps:** lock file maintenance ([#507](https://github.com/alexdiliberto/eslint-config/issues/507))
+- **deps:** update all non-major dependencies ([#506](https://github.com/alexdiliberto/eslint-config/issues/506))
+
+
 <a name="v7.0.2"></a>
 ## [v7.0.2] - 2025-11-14
 ### CI
 - fix formatting in renovate.json5
 
 ### Chore
+- release v7.0.2
 - **config:** migrate config .github/renovate.json5 ([#500](https://github.com/alexdiliberto/eslint-config/issues/500))
 - **deps:** update all non-major dependencies ([#504](https://github.com/alexdiliberto/eslint-config/issues/504))
 - **deps:** lock file maintenance ([#505](https://github.com/alexdiliberto/eslint-config/issues/505))
@@ -908,7 +953,9 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.2...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.0...HEAD
+[v8.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.3...v8.0.0
+[v7.0.3]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.2...v7.0.3
 [v7.0.2]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.1...v7.0.2
 [v7.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0...v7.0.1
 [v7.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.0-1...v7.0.0
