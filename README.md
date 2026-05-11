@@ -75,8 +75,16 @@ export default [
 ## Release
 Releases are automated using [`release-it`](https://github.com/release-it/release-it). To publish a new version:
 
-```js
+```bash
+# First, Create a new NPM token: https://www.npmjs.com/settings/alexdiliberto/tokens/
+#  - Name: eslint-config
+#  - Bypass 2FA
+#  - Permissions: Read and Write for @alexdiliberto/eslint-config repo
+
+export NPM_TOKEN="TOKEN"
 pnpm release
+
+# You can safely delete the NPM token now
 ```
 
 ## License
