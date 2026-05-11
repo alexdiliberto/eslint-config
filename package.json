@@ -64,13 +64,13 @@
     "@stylistic/eslint-plugin": "^5.0.0",
     "eslint": "^9.0.0"
   },
-  "packageManager": "pnpm@10.33.4",
+  "packageManager": "pnpm@11.0.9",
   "engines": {
-    "node": ">=20.9.0 || ^22 || ^24"
+    "node": "^22.13.0 || ^24"
   },
   "volta": {
-    "node": "24.11.0",
-    "pnpm": "10.33.4"
+    "node": "24.15.0",
+    "pnpm": "11.0.9"
   },
   "publishConfig": {
     "access": "public"

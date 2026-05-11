@@ -55,7 +55,7 @@ export default (Array.isArray(cfg) ? cfg : (cfg?.default ?? cfg));
 **Notes:**
 - This config replaces `.eslintrc.*` and works with ESLint’s new Flat Config format.
 - Requiring async support (via `await`) allows future extensibility, e.g. dynamic imports or file systems reads.
-- Valid for both Node ≥20.9 and in ESM environments.
+- Valid for Node ≥22 and in ESM environments.
 
 ### Using with `eslint:recommended`
 
