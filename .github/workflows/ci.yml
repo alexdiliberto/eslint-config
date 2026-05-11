@@ -156,7 +156,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir smoke-cjs && cd smoke-cjs && npm init -y >/dev/null
-          pnpm add -D eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
+          pnpm add -D --ignore-scripts eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
           function foo() {
@@ -191,7 +191,7 @@ jobs:
           mkdir smoke-esm && cd smoke-esm && npm init -y >/dev/null
           node -e "const fs=require('fs');const p=require('./package.json');p.type='module';fs.writeFileSync('package.json',JSON.stringify(p,null,2));"
 
-          pnpm add -D eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
+          pnpm add -D --ignore-scripts eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
           function foo() {
