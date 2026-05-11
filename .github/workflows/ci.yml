@@ -181,7 +181,12 @@ jobs:
           JS
 
           npx eslint sample.js --max-warnings=0
-          (npx eslint invalid.js && exit 1) || true
+
+          if npx eslint invalid.js > /dev/null 2>&1; then
+            echo "Expected invalid.js to fail linting"
+            exit 1
+          fi
+
           npx eslint invalid.js --fix
           npx eslint invalid.js --max-warnings=0
 
@@ -211,6 +216,11 @@ jobs:
           JS
 
           npx eslint sample.js --max-warnings=0
-          (npx eslint invalid.js && exit 1) || true
+
+          if npx eslint invalid.js > /dev/null 2>&1; then
+            echo "Expected invalid.js to fail linting"
+            exit 1
+          fi
+
           npx eslint invalid.js --fix
           npx eslint invalid.js --max-warnings=0
