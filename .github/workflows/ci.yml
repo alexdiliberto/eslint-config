@@ -8,7 +8,7 @@ on:
       - main
   # early issue detection: run CI weekly on Sundays
   schedule:
-  - cron:  '0 6 * * 0'
+  - cron: '0 6 * * 0' # Runs at 06:00, only on Sunday
 
 # cancel older runs for the same branch/PR when a new commit arrives
 concurrency:
@@ -29,7 +29,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-14]
-        node-version: [20, 22, 24]
+        node-version: [22, 24]
     defaults:
       run:
         shell: bash
@@ -40,7 +40,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
-          version: 10.33.4
+          version: 11.0.9
           run_install: false
 
       - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
@@ -72,14 +72,14 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
-          version: 10.33.4
+          version: 11.0.9
           run_install: false
 
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           # renovate: datasource=github-releases depName=actions/setup-node enabled=false
-          node-version: '20.20.2'
+          node-version: '22.22.2'
           check-latest: true # get latest patch
           cache: pnpm # enable pnpm store cache
 
@@ -118,7 +118,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20, 22, 24]
+        node-version: [22, 24]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
@@ -126,7 +126,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
-          version: 10.33.4
+          version: 11.0.9
           run_install: false
 
       - name: Setup Node
