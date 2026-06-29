@@ -40,7 +40,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
-          version: 11.6.0
+          version: 11.9.0
           run_install: false
 
       - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
@@ -72,14 +72,14 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
-          version: 11.6.0
+          version: 11.9.0
           run_install: false
 
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           # renovate: datasource=github-releases depName=actions/setup-node enabled=false
-          node-version: '22.22.3'
+          node-version: '22.23.1'
           check-latest: true # get latest patch
           cache: pnpm # enable pnpm store cache
 
@@ -126,7 +126,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
-          version: 11.6.0
+          version: 11.9.0
           run_install: false
 
       - name: Setup Node
