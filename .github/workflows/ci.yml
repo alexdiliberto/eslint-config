@@ -3,19 +3,19 @@ name: Node Cross-Platform CI
 on:
   pull_request:
   push:
-    # filtering branches here prevents duplicate builds from pull_request and push
+    # Filtering branches here prevents duplicate builds from pull_request and push.
     branches:
       - main
-  # early issue detection: run CI weekly on Sundays
+  # Early issue detection: run CI weekly on Sundays.
   schedule:
-  - cron: '0 6 * * 0' # Runs at 06:00, only on Sunday
+    - cron: '0 6 * * 0' # Runs at 06:00 on Sunday.
 
-# cancel older runs for the same branch/PR when a new commit arrives
+# Cancel older runs for the same branch or PR when a new commit arrives.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# principle of least privilege for GITHUB_TOKEN
+# Principle of least privilege for GITHUB_TOKEN.
 permissions:
   contents: read
 
@@ -24,15 +24,24 @@ env:
 
 jobs:
   build:
+    name: Build (${{ matrix.os }}, Node ${{ matrix.node-version }})
     runs-on: ${{ matrix.os }}
+
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-15]
-        node-version: [22, 24]
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-15
+        node-version:
+          - 22
+          - 24
+
     defaults:
       run:
         shell: bash
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
@@ -47,13 +56,13 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          check-latest: true # get latest patch
-          cache: pnpm # enable pnpm store cache
+          check-latest: true
+          cache: pnpm
 
       - name: Verify Node and PNPM Versions
         run: |
-          node -v
-          pnpm -v
+          node --version
+          pnpm --version
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -61,10 +70,12 @@ jobs:
       - name: Test
         run: pnpm test
 
-  pack-dry-run:
+  pack-validation:
+    name: Package Validation
     needs: build
     if: ${{ success() && (github.event_name == 'pull_request' || github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
@@ -79,34 +90,55 @@ jobs:
         uses: actions/setup-node@v6
         with:
           # renovate: datasource=github-releases depName=actions/setup-node enabled=false
-          node-version: '22.23.1'
-          check-latest: true # get latest patch
-          cache: pnpm # enable pnpm store cache
+          node-version: '24.18.0'
+          check-latest: true
+          cache: pnpm
+
+      - name: Verify Node, npm, and PNPM Versions
+        run: |
+          node --version
+          npm --version
+          pnpm --version
 
       - name: Install Dependencies
-        # Prod deps not needed for packing, but safe
         run: pnpm install --frozen-lockfile
 
-      # Create the Tarball
       - name: Pack Package
         id: pack
+        shell: bash
         run: |
+          set -euo pipefail
+
           pnpm pack --pack-destination dist
-          # derive filename (pnpm prints it, but we compute robustly too)
-          TARBALL="$(node -e "const p=require('./package.json'); const n=p.name.replace('@','').replace('/','-'); console.log(\`dist/\${n}-\${p.version}.tgz\`)")"
+
+          TARBALL="$(
+            node -e "
+              const packageJson = require('./package.json');
+              const packageName = packageJson.name
+                .replace(/^@/, '')
+                .replace('/', '-');
+
+              console.log(
+                \`dist/\${packageName}-\${packageJson.version}.tgz\`
+              );
+            "
+          )"
+
+          if [[ ! -f "$TARBALL" ]]; then
+            echo "::error title=Package tarball missing::Expected tarball was not created: $TARBALL"
+            exit 1
+          fi
+
           echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
+          echo "::notice title=Package tarball::Tarball created at $TARBALL"
 
       - name: List Tarball Contents
         run: tar -tzf "${{ steps.pack.outputs.tarball }}"
 
-      - name: Publint
+      - name: Validate Package with Publint
         run: pnpm dlx publint@latest "${{ steps.pack.outputs.tarball }}"
 
-      - name: npm publish --dry-run (summary)
-        run: npm publish --dry-run
-
-      # Make the tarball downloadable from the CI page
-      - name: Upload tarball artifact
+      - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v7
         with:
           name: package-tarball
@@ -114,15 +146,18 @@ jobs:
           if-no-files-found: error
 
   consumer-smoke:
-    needs: pack-dry-run
+    name: Consumer Smoke Test (Node ${{ matrix.node-version }})
+    needs: pack-validation
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22, 24]
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v6
 
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          - 22
+          - 24
+
+    steps:
       - name: Setup PNPM
         uses: pnpm/action-setup@v6
         with:
@@ -133,30 +168,61 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          check-latest: true # get latest patch
-          cache: pnpm # enable pnpm store cache
+          check-latest: true
 
-      - name: Show Versions
+      - name: Verify Node, npm, and PNPM Versions
         run: |
-          node -v
-          pnpm -v
-          npx eslint -v
+          node --version
+          npm --version
+          pnpm --version
 
-      - name: Pack
+      - name: Download Package Tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: package-tarball
+          path: dist
+
+      - name: Locate Package Tarball
         id: pack
-        run: |
-          pnpm install --frozen-lockfile
-          # capture the tarball path printed by pnpm on the last line
-          TARBALL="$(pnpm pack --pack-destination dist | tail -n1 | xargs realpath)"
-          echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
-          # log for debugging
-          echo "::notice title=pack::Tarball => $TARBALL"
-
-      - name: CJS Consumer
+        shell: bash
         run: |
           set -euo pipefail
-          mkdir smoke-cjs && cd smoke-cjs && npm init -y >/dev/null
-          pnpm add -D --ignore-scripts eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
+
+          mapfile -t TARBALLS < <(
+            find "$GITHUB_WORKSPACE/dist" \
+              -maxdepth 1 \
+              -type f \
+              -name '*.tgz' \
+              -print
+          )
+
+          if [[ "${#TARBALLS[@]}" -ne 1 ]]; then
+            echo "::error title=Package tarball count::Expected exactly one tarball, found ${#TARBALLS[@]}."
+            printf '%s\n' "${TARBALLS[@]}"
+            exit 1
+          fi
+
+          TARBALL="${TARBALLS[0]}"
+
+          echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
+          echo "::notice title=Package tarball::Using $TARBALL"
+
+      - name: Test CommonJS Consumer
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir smoke-cjs
+          cd smoke-cjs
+
+          npm init -y >/dev/null
+
+          pnpm add \
+            --save-dev \
+            --ignore-scripts \
+            eslint \
+            @stylistic/eslint-plugin \
+            "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
           function foo() {
@@ -167,36 +233,66 @@ jobs:
           JS
 
           cat > invalid.js <<'JS'
-          function  bar(){return 2 } bar()
+          function bar(){return 2 }
+          bar()
           JS
 
           cat > eslint.config.js <<'JS'
           'use strict';
+
           const cfgOrPromise = require('@alexdiliberto/eslint-config');
+
           module.exports = (async () => {
-            const cfg = (cfgOrPromise?.then ? await cfgOrPromise : (cfgOrPromise?.default ?? cfgOrPromise));
-            if (!Array.isArray(cfg)) throw new Error('Expected flat config array');
+            const cfg = cfgOrPromise?.then
+              ? await cfgOrPromise
+              : (cfgOrPromise?.default ?? cfgOrPromise);
+
+            if (!Array.isArray(cfg)) {
+              throw new Error('Expected flat config array');
+            }
+
             return cfg;
           })();
           JS
 
-          npx eslint sample.js --max-warnings=0
+          pnpm exec eslint sample.js --max-warnings=0
 
-          if npx eslint invalid.js > /dev/null 2>&1; then
-            echo "Expected invalid.js to fail linting"
+          if pnpm exec eslint invalid.js >/dev/null 2>&1; then
+            echo "Expected invalid.js to fail linting."
             exit 1
           fi
 
-          npx eslint invalid.js --fix
-          npx eslint invalid.js --max-warnings=0
+          pnpm exec eslint invalid.js --fix
+          pnpm exec eslint invalid.js --max-warnings=0
 
-      - name: ESM Consumer
+      - name: Test ESM Consumer
+        shell: bash
         run: |
           set -euo pipefail
-          mkdir smoke-esm && cd smoke-esm && npm init -y >/dev/null
-          node -e "const fs=require('fs');const p=require('./package.json');p.type='module';fs.writeFileSync('package.json',JSON.stringify(p,null,2));"
 
-          pnpm add -D --ignore-scripts eslint @stylistic/eslint-plugin "${{ steps.pack.outputs.tarball }}"
+          mkdir smoke-esm
+          cd smoke-esm
+
+          npm init -y >/dev/null
+
+          node -e "
+            const fs = require('fs');
+            const packageJson = require('./package.json');
+
+            packageJson.type = 'module';
+
+            fs.writeFileSync(
+              'package.json',
+              JSON.stringify(packageJson, null, 2) + '\n'
+            );
+          "
+
+          pnpm add \
+            --save-dev \
+            --ignore-scripts \
+            eslint \
+            @stylistic/eslint-plugin \
+            "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
           function foo() {
@@ -207,20 +303,24 @@ jobs:
           JS
 
           cat > invalid.js <<'JS'
-          function  bar(){return 2 } bar()
+          function bar(){return 2 }
+          bar()
           JS
 
           cat > eslint.config.mjs <<'JS'
           import cfg from '@alexdiliberto/eslint-config';
-          export default (Array.isArray(cfg) ? cfg : (cfg?.default ?? cfg));
+
+          export default Array.isArray(cfg)
+            ? cfg
+            : (cfg?.default ?? cfg);
           JS
 
-          npx eslint sample.js --max-warnings=0
+          pnpm exec eslint sample.js --max-warnings=0
 
-          if npx eslint invalid.js > /dev/null 2>&1; then
-            echo "Expected invalid.js to fail linting"
+          if pnpm exec eslint invalid.js >/dev/null 2>&1; then
+            echo "Expected invalid.js to fail linting."
             exit 1
           fi
 
-          npx eslint invalid.js --fix
-          npx eslint invalid.js --max-warnings=0
+          pnpm exec eslint invalid.js --fix
+          pnpm exec eslint invalid.js --max-warnings=0
