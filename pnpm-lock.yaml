@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@commitlint/cli':
-        specifier: ^21.1.0
+        specifier: ^21.2.1
         version: 21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.1.0)(typescript@7.0.2)
       '@commitlint/config-conventional':
         specifier: ^20.5.3
@@ -24,7 +24,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0(@types/node@26.1.1)(typescript@7.0.2)
       eslint:
-        specifier: ^10.5.0
+        specifier: ^10.7.0
         version: 10.7.0(jiti@2.7.0)
       husky:
         specifier: ^9.1.7
