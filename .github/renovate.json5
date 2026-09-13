@@ -74,6 +74,8 @@
         'after 9pm on sunday',
       ],
       matchPackageNames: [
+        '@eslint/js',
+        '@stylistic/eslint-plugin',
         'eslint',
         'eslint-config-prettier',
         'prettier',

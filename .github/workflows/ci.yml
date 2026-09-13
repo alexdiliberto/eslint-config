@@ -219,8 +219,7 @@ jobs:
           npm init -y >/dev/null
           npm install \
             --save-dev \
-            eslint@^9.0.0 \
-            @stylistic/eslint-plugin@^5.0.0 \
+            eslint@^10.0.0 \
             "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
@@ -276,8 +275,7 @@ jobs:
 
           pnpm add \
             --save-dev \
-            eslint@^9.0.0 \
-            @stylistic/eslint-plugin@^5.0.0 \
+            eslint@^10.0.0 \
             "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'

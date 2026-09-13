@@ -13,6 +13,12 @@ if (!Array.isArray(flatConfig) || !flatConfig.length || typeof flatConfig[0] !==
   throw new Error('flat.js must export a non-empty array of flat config objects');
 }
 
+const configuredRules = {};
+
+for (const config of flatConfig) {
+  Object.assign(configuredRules, config.rules);
+}
+
 const baseDir = __dirname;
 const fakeDir = path.resolve(path.join(baseDir, 'fake-files'));
 
@@ -29,15 +35,31 @@ function mkCLI(opts = {}) {
 
 test('sanity: referenced @stylistic/* rules exist', (t) => {
   t.plan(1);
-  const rules = flatConfig[0].rules || {};
-  const stylisticIds = Object.keys(rules).filter((r) => r.startsWith('@stylistic/'));
+  const stylisticIds = Object.keys(configuredRules).filter((r) => r.startsWith('@stylistic/'));
   t.ok(stylisticIds.length > 0, 'stylistic rules are present (non-empty)');
 });
 
 test('validate: flat config exports expected shape', (t) => {
-  t.plan(2);
+  t.plan(4);
   t.ok(Array.isArray(flatConfig), 'flat.js exports an array');
-  t.ok(flatConfig.length > 0 && typeof flatConfig[0] === 'object', 'first element is an object');
+  t.equal(flatConfig.length, 2, 'config has recommended and project rule layers');
+  t.equal(flatConfig[0].name, '@alexdiliberto/eslint-config/recommended');
+  t.equal(flatConfig[1].name, '@alexdiliberto/eslint-config/rules');
+});
+
+test('validate: modern defaults and linter safeguards are enabled', (t) => {
+  t.plan(4);
+  t.equal(configuredRules['no-undef'], 'error', 'includes eslint:recommended');
+  t.equal(flatConfig[1].languageOptions, undefined, 'does not force a source type');
+  t.equal(flatConfig[1].linterOptions.reportUnusedDisableDirectives, 'error');
+  t.equal(flatConfig[1].linterOptions.reportUnusedInlineConfigs, 'error');
+});
+
+test('validate: deprecated core rules have been removed or migrated', (t) => {
+  t.plan(3);
+  t.notOk(Object.hasOwn(configuredRules, 'handle-callback-err'));
+  t.notOk(Object.hasOwn(configuredRules, 'padding-line-between-statements'));
+  t.ok(Object.hasOwn(configuredRules, '@stylistic/padding-line-between-statements'));
 });
 
 test('validate: config loads and applies with no rule crashes', async(t) => {
@@ -50,6 +72,30 @@ test('validate: config loads and applies with no rule crashes', async(t) => {
   t.equal(report.fixableErrorCount, 0, 'report.fixableErrorCount === 0');
   t.equal(report.warningCount, 0, 'report.warningCount === 0');
   t.equal(report.fixableWarningCount, 0, 'report.fixableWarningCount === 0');
+});
+
+test('language: ECMAScript modules use ESLint 10 defaults', async(t) => {
+  const cli = mkCLI();
+  const source = [
+    'export default function answer() {',
+    '  const value = 42;',
+    '',
+    '  return value;',
+    '}',
+    ''
+  ].join('\n');
+  const [report] = await cli.lintText(source, { filePath: 'module.js' });
+
+  t.plan(1);
+  t.equal(report.errorCount, 0, 'module syntax is accepted without consumer overrides');
+});
+
+test('recommended: undefined globals are reported', async(t) => {
+  const cli = mkCLI();
+  const [report] = await cli.lintText('missingGlobal();\n', { filePath: 'undefined.js' });
+
+  t.plan(1);
+  t.ok(report.messages.some((message) => message.ruleId === 'no-undef'));
 });
 
 test('lint: valid.js', async(t) => {
@@ -65,7 +111,7 @@ test('lint: valid.js', async(t) => {
 
 test('guard: no core stylistic rule IDs present', (t) => {
   t.plan(1);
-  const cfgRules = Object.keys(flatConfig[0].rules || {});
+  const cfgRules = Object.keys(configuredRules);
   const legacyStylistic = new Set([
     'array-bracket-spacing', 'arrow-parens', 'arrow-spacing', 'block-spacing',
     'brace-style', 'comma-dangle', 'comma-spacing', 'comma-style', 'dot-location',
