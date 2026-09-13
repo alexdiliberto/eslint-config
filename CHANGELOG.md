@@ -2,18 +2,22 @@
 ## [Unreleased]
 
 
+<a name="v9.0.0"></a>
+## [v9.0.0] - 2026-09-12
+
 <a name="v8.0.2"></a>
 ## [v8.0.2] - 2026-09-12
 ### CI
 - harden package validation ([#570](https://github.com/alexdiliberto/eslint-config/issues/570))
 
 ### Chore
-- **deps:** update dependency [@commitlint](https://github.com/commitlint)/config-conventional to v21 ([#569](https://github.com/alexdiliberto/eslint-config/issues/569))
+- release v8.0.2
+- **deps:** update dependency eslint to ^10.9.1 ([#565](https://github.com/alexdiliberto/eslint-config/issues/565))
 - **deps:** update pnpm to v11.25.0 ([#568](https://github.com/alexdiliberto/eslint-config/issues/568))
 - **deps:** update actions/checkout action to v7 ([#566](https://github.com/alexdiliberto/eslint-config/issues/566))
 - **deps:** update actions/setup-node action to v7 ([#567](https://github.com/alexdiliberto/eslint-config/issues/567))
 - **deps:** update all non-major dependencies ([#564](https://github.com/alexdiliberto/eslint-config/issues/564))
-- **deps:** update dependency eslint to ^10.9.1 ([#565](https://github.com/alexdiliberto/eslint-config/issues/565))
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/config-conventional to v21 ([#569](https://github.com/alexdiliberto/eslint-config/issues/569))
 - **deps:** update dependency eslint to ^10.8.1 ([#563](https://github.com/alexdiliberto/eslint-config/issues/563))
 - **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^21.2.2 ([#562](https://github.com/alexdiliberto/eslint-config/issues/562))
 - **deps:** update dependency eslint to ^10.8.0 ([#561](https://github.com/alexdiliberto/eslint-config/issues/561))
@@ -998,7 +1002,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.2...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v9.0.0...HEAD
+[v9.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.2...v9.0.0
 [v8.0.2]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.1...v8.0.2
 [v8.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.0...v8.0.1
 [v8.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.3...v8.0.0
