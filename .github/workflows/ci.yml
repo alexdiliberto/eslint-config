@@ -44,16 +44,16 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           version: 11.25.0
           run_install: false
 
       - name: Use Node ${{ matrix.node-version }} on ${{ matrix.os }}
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
@@ -67,6 +67,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint
+        run: pnpm lint
+
       - name: Test
         run: pnpm test
 
@@ -78,16 +81,16 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           version: 11.25.0
           run_install: false
 
       - name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           # renovate: datasource=github-releases depName=actions/setup-node enabled=false
           node-version: '24.20.0'
@@ -112,15 +115,13 @@ jobs:
           pnpm pack --pack-destination dist
 
           TARBALL="$(
-            node -e "
+            node -p "
               const packageJson = require('./package.json');
               const packageName = packageJson.name
                 .replace(/^@/, '')
                 .replace('/', '-');
 
-              console.log(
-                \`dist/\${packageName}-\${packageJson.version}.tgz\`
-              );
+              'dist/' + packageName + '-' + packageJson.version + '.tgz';
             "
           )"
 
@@ -136,10 +137,10 @@ jobs:
         run: tar -tzf "${{ steps.pack.outputs.tarball }}"
 
       - name: Validate Package with Publint
-        run: pnpm dlx publint@latest "${{ steps.pack.outputs.tarball }}"
+        run: pnpm dlx publint@0.3.24 "${{ steps.pack.outputs.tarball }}"
 
       - name: Upload Tarball Artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: package-tarball
           path: ${{ steps.pack.outputs.tarball }}
@@ -159,13 +160,13 @@ jobs:
 
     steps:
       - name: Setup PNPM
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           version: 11.25.0
           run_install: false
 
       - name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
@@ -177,7 +178,7 @@ jobs:
           pnpm --version
 
       - name: Download Package Tarball
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: package-tarball
           path: dist
@@ -207,7 +208,7 @@ jobs:
           echo "tarball=$TARBALL" >> "$GITHUB_OUTPUT"
           echo "::notice title=Package tarball::Using $TARBALL"
 
-      - name: Test CommonJS Consumer
+      - name: Test CommonJS Consumer with npm
         shell: bash
         run: |
           set -euo pipefail
@@ -216,12 +217,10 @@ jobs:
           cd smoke-cjs
 
           npm init -y >/dev/null
-
-          pnpm add \
+          npm install \
             --save-dev \
-            --ignore-scripts \
-            eslint \
-            @stylistic/eslint-plugin \
+            eslint@^9.0.0 \
+            @stylistic/eslint-plugin@^5.0.0 \
             "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
@@ -240,32 +239,20 @@ jobs:
           cat > eslint.config.js <<'JS'
           'use strict';
 
-          const cfgOrPromise = require('@alexdiliberto/eslint-config');
-
-          module.exports = (async () => {
-            const cfg = cfgOrPromise?.then
-              ? await cfgOrPromise
-              : (cfgOrPromise?.default ?? cfgOrPromise);
-
-            if (!Array.isArray(cfg)) {
-              throw new Error('Expected flat config array');
-            }
-
-            return cfg;
-          })();
+          module.exports = require('@alexdiliberto/eslint-config');
           JS
 
-          pnpm exec eslint sample.js --max-warnings=0
+          npx --no-install eslint sample.js --max-warnings=0
 
-          if pnpm exec eslint invalid.js >/dev/null 2>&1; then
+          if npx --no-install eslint invalid.js >/dev/null 2>&1; then
             echo "Expected invalid.js to fail linting."
             exit 1
           fi
 
-          pnpm exec eslint invalid.js --fix
-          pnpm exec eslint invalid.js --max-warnings=0
+          npx --no-install eslint invalid.js --fix
+          npx --no-install eslint invalid.js --max-warnings=0
 
-      - name: Test ESM Consumer
+      - name: Test ESM Consumer with PNPM
         shell: bash
         run: |
           set -euo pipefail
@@ -289,9 +276,8 @@ jobs:
 
           pnpm add \
             --save-dev \
-            --ignore-scripts \
-            eslint \
-            @stylistic/eslint-plugin \
+            eslint@^9.0.0 \
+            @stylistic/eslint-plugin@^5.0.0 \
             "${{ steps.pack.outputs.tarball }}"
 
           cat > sample.js <<'JS'
@@ -308,11 +294,9 @@ jobs:
           JS
 
           cat > eslint.config.mjs <<'JS'
-          import cfg from '@alexdiliberto/eslint-config';
+          import config from '@alexdiliberto/eslint-config';
 
-          export default Array.isArray(cfg)
-            ? cfg
-            : (cfg?.default ?? cfg);
+          export default config;
           JS
 
           pnpm exec eslint sample.js --max-warnings=0

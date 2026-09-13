@@ -1,7 +1,7 @@
 // test/test-runner.js
 'use strict';
 
-const { ESLint } = require('eslint'); // ESLint v9 API
+const { ESLint } = require('eslint'); // ESLint API
 const test = require('tape');
 const path = require('path');
 const fs = require('fs/promises');
@@ -21,7 +21,7 @@ function mkCLI(opts = {}) {
   return new ESLint({
     // Do NOT load eslint.config.js from disk; use our programmatic config:
     overrideConfigFile: true,
-    // ESLint v9 accepts an array for overrideConfig (flat)
+    // ESLint accepts an array for overrideConfig (flat)
     overrideConfig: flatConfig,
     ...opts
   });
@@ -67,19 +67,18 @@ test('guard: no core stylistic rule IDs present', (t) => {
   t.plan(1);
   const cfgRules = Object.keys(flatConfig[0].rules || {});
   const legacyStylistic = new Set([
-    'array-bracket-spacing','arrow-parens','arrow-spacing','block-spacing',
-    'brace-style','comma-dangle','comma-spacing','comma-style','dot-location',
-    'eol-last','function-call-spacing','generator-star-spacing','indent','key-spacing',
-    'keyword-spacing','max-statements-per-line','no-confusing-arrow','no-floating-decimal',
-    'no-multi-spaces','no-multiple-empty-lines','no-trailing-spaces','object-curly-spacing',
-    'operator-linebreak','padded-blocks','quotes','semi','semi-spacing',
-    'space-before-blocks','space-before-function-paren','space-in-parens',
-    'space-infix-ops','space-unary-ops','spaced-comment'
+    'array-bracket-spacing', 'arrow-parens', 'arrow-spacing', 'block-spacing',
+    'brace-style', 'comma-dangle', 'comma-spacing', 'comma-style', 'dot-location',
+    'eol-last', 'function-call-spacing', 'generator-star-spacing', 'indent', 'key-spacing',
+    'keyword-spacing', 'max-statements-per-line', 'no-confusing-arrow', 'no-floating-decimal',
+    'no-multi-spaces', 'no-multiple-empty-lines', 'no-trailing-spaces', 'object-curly-spacing',
+    'operator-linebreak', 'padded-blocks', 'quotes', 'semi', 'semi-spacing',
+    'space-before-blocks', 'space-before-function-paren', 'space-in-parens',
+    'space-infix-ops', 'space-unary-ops', 'spaced-comment'
   ]);
   const offenders = cfgRules.filter((r) => legacyStylistic.has(r));
   t.deepEqual(offenders, [], 'all stylistic rules use @stylistic/* IDs');
 });
-
 
 test('lint: invalid.js (all fixable)', async (t) => {
   const cli = mkCLI();
@@ -128,8 +127,8 @@ test('enforcement: non-fixable core rules fire (no-unused-vars / no-console / eq
   // Preformatted to avoid stylistic fixables; only core rule violations should fire.
   const src = [
     'function f(x) {',
-    '  if (x == 0) {',             // eqeqeq (non-null)
-    "    console.log('x');",       // no-console (warn/error only allowed)
+    '  if (x == 0) {', // eqeqeq (non-null)
+    "    console.log('x');", // no-console (warn/error only allowed)
     '  }',
     '',
     '  return 1;',
@@ -155,7 +154,7 @@ test('consumer: extends via imported flat config', async (t) => {
 
   await fs.rm(tmp, { recursive: true, force: true }).catch(() => {});
   await fs.mkdir(tmp, { recursive: true });
-  t.teardown(async () => { await fs.rm(tmp, { recursive: true, force: true }); });
+  t.teardown(() => fs.rm(tmp, { recursive: true, force: true }));
 
   // Write CJS config that re-exports our flat array
   const pkgFlatAbs = path.resolve(path.join(baseDir, '..', 'flat.js')).replace(/\\/g, '/');
@@ -183,7 +182,7 @@ test('consumer: ESM config can import package', async (t) => {
   const tmp = path.join(baseDir, '.tmp-consumer-flat-esm');
   await fs.rm(tmp, { recursive: true, force: true }).catch(() => {});
   await fs.mkdir(tmp, { recursive: true });
-  t.teardown(async () => { await fs.rm(tmp, { recursive: true, force: true }); });
+  t.teardown(() => fs.rm(tmp, { recursive: true, force: true }));
 
   const pkgFlatAbs = path.resolve(path.join(baseDir, '..', 'flat.js'));
   const pkgFlatUrl = pathToFileURL(pkgFlatAbs).href;
@@ -205,7 +204,7 @@ test('consumer: ESM config can import package', async (t) => {
 
   const cli = new ESLint({ cwd: tmp });
   const [report] = await cli.lintFiles(['sample.js']);
-  const ruleNotFound = report.messages.some(m => /Definition for rule .* was not found/.test(m.message));
+  const ruleNotFound = report.messages.some((m) => /Definition for rule .* was not found/.test(m.message));
   t.equal(ruleNotFound, false, 'ESM consumer loads config without rule resolution errors');
 });
 
