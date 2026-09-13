@@ -5,6 +5,7 @@
     ':semanticCommits',
     ':dependencyDashboard',
     'group:allNonMajor',
+    'helpers:pinGitHubActionDigests',
   ],
   timezone: 'America/New_York',
   schedule: [
