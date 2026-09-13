@@ -7,10 +7,7 @@ A shareable [ESLint](https://eslint.org/) flat config containing my preferred ES
 ## Requirements
 
 * Node.js 22 or later
-* ESLint 9
-* `@stylistic/eslint-plugin` 5
-
-ESLint 10 support is planned for the next major release.
+* ESLint 10
 
 ## Installation
 
@@ -19,8 +16,7 @@ Install the config and its peer dependencies:
 ```bash
 pnpm add --save-dev \
   @alexdiliberto/eslint-config \
-  eslint@^9 \
-  @stylistic/eslint-plugin@^5
+  eslint@^10
 ```
 
 Using npm:
@@ -28,9 +24,10 @@ Using npm:
 ```bash
 npm install --save-dev \
   @alexdiliberto/eslint-config \
-  eslint@^9 \
-  @stylistic/eslint-plugin@^5
+  eslint@^10
 ```
+
+The package includes `@eslint/js` and `@stylistic/eslint-plugin`, so consumers do not install them separately.
 
 ## Usage
 
@@ -43,19 +40,7 @@ Create `eslint.config.js` in the root of your project:
 ```js
 'use strict';
 
-const configOrPromise = require('@alexdiliberto/eslint-config');
-
-module.exports = (async () => {
-  const config = configOrPromise?.then
-    ? await configOrPromise
-    : (configOrPromise?.default ?? configOrPromise);
-
-  if (!Array.isArray(config)) {
-    throw new Error('Expected flat config array');
-  }
-
-  return config;
-})();
+module.exports = require('@alexdiliberto/eslint-config');
 ```
 
 ### ECMAScript modules
@@ -65,44 +50,84 @@ Create `eslint.config.mjs` in the root of your project:
 ```js
 import config from '@alexdiliberto/eslint-config';
 
-export default Array.isArray(config)
-  ? config
-  : (config?.default ?? config);
+export default config;
 ```
 
-## Combining with `eslint:recommended`
+## What is included
 
-Flat config does not support the legacy `"eslint:recommended"` string. Install `@eslint/js`:
+The exported array includes:
 
-```bash
-pnpm add --save-dev @eslint/js
-```
+* ESLint's recommended JavaScript rules
+* the package's opinionated correctness and maintainability rules
+* formatting rules provided by ESLint Stylistic
+* errors for unused disable directives and unused inline configuration comments
 
-Then include its recommended configuration before this package so this package's rules take precedence:
+The config follows ESLint 10's default JavaScript language behavior. It does not force every file to be parsed as a classic script, so ECMAScript modules work without an additional override.
+
+## Customization
+
+Append project-specific configuration after this package so it takes precedence:
 
 ```js
-import js from '@eslint/js';
 import config from '@alexdiliberto/eslint-config';
 
 export default [
-  js.configs.recommended,
   ...config,
+  {
+    rules: {
+      'no-console': 'off',
+    },
+  },
 ];
 ```
 
-Additional flat configurations can be inserted before this package:
+Other shareable flat configs can be inserted before or after this package depending on the desired precedence:
 
 ```js
-import js from '@eslint/js';
 import config from '@alexdiliberto/eslint-config';
 import anotherConfig from 'another-eslint-config';
 
 export default [
-  js.configs.recommended,
   ...anotherConfig,
   ...config,
 ];
 ```
+
+### Runtime globals
+
+The config does not assume a browser or Node.js runtime. Because the recommended baseline enables `no-undef`, declare the globals used by your project. For example:
+
+```bash
+pnpm add --save-dev globals
+```
+
+```js
+import config from '@alexdiliberto/eslint-config';
+import globals from 'globals';
+
+export default [
+  ...config,
+  {
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+];
+```
+
+Use `globals.node` for Node.js projects, or combine global sets when the project targets multiple runtimes.
+
+## Migrating from version 8
+
+Version 9 is a breaking release with these changes:
+
+* ESLint 10 is required. ESLint 9 is no longer supported.
+* ESLint's recommended rules are included automatically. Remove any duplicate `@eslint/js` recommended entry from your project config.
+* Runtime globals must be declared explicitly when a project uses browser or Node.js globals.
+* `@stylistic/eslint-plugin` is now an internal dependency. Remove it from your project unless another config uses it directly.
+* JavaScript files are no longer forced to `sourceType: 'script'`. Add a project override only when classic script parsing is required.
+* The deprecated core `handle-callback-err` rule has been removed.
+* The deprecated core `padding-line-between-statements` rule has moved to its maintained ESLint Stylistic replacement with the same options.
 
 ## Release
 
@@ -189,7 +214,7 @@ pnpm release patch
 
 Replace `patch` with `minor` or `major` when appropriate.
 
-`release-it` will run the tests, update the version and changelog, publish to npm, create and push the Git tag, and create the GitHub release.
+`release-it` will run linting and tests, update the version and changelog, publish to npm, create and push the Git tag, and create the GitHub release.
 
 ### 5. Verify the release
 

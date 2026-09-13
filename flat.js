@@ -1,16 +1,22 @@
-// flat.js — ESLint v9+ flat shareable config (CJS export)
+// flat.js - ESLint 10 flat shareable config (CommonJS export)
 'use strict';
 
+const js = require('@eslint/js');
 const stylistic = require('@stylistic/eslint-plugin');
 
-/** @type {import('eslint').FlatConfig[]} */
+/** @type {import('eslint').Linter.Config[]} */
 module.exports = [
   {
+    ...js.configs.recommended,
+    name: '@alexdiliberto/eslint-config/recommended',
+  },
+  {
+    name: '@alexdiliberto/eslint-config/rules',
     plugins: { '@stylistic': stylistic },
 
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'script',
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
+      reportUnusedInlineConfigs: 'error',
     },
 
     rules: {
@@ -39,6 +45,14 @@ module.exports = [
       '@stylistic/object-curly-spacing': ['error', 'always'],
       '@stylistic/operator-linebreak': ['error', 'after'],
       '@stylistic/padded-blocks': ['error', 'never'],
+      '@stylistic/padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: '*', next: 'return' },
+        { blankLine: 'always', prev: '*', next: 'block-like' },
+        { blankLine: 'always', prev: 'block-like', next: '*' },
+        { blankLine: 'always', prev: ['const', 'let'], next: '*' },
+        { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
+      ],
       '@stylistic/quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: 'always' }],
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/semi-spacing': ['error', { before: false, after: true }],
@@ -68,7 +82,6 @@ module.exports = [
       'dot-notation': ['error', { allowKeywords: true }],
       'eqeqeq': ['error', 'always', { null: 'ignore' }],
       'guard-for-in': 'error',
-      'handle-callback-err': ['error', '^(err|error)$'],
       'no-alert': 'warn',
       'no-array-constructor': 'error',
       'no-caller': 'error',
@@ -94,14 +107,6 @@ module.exports = [
       'no-with': 'error',
       'object-shorthand': ['error', 'always'],
       'one-var': ['error', 'never'],
-      'padding-line-between-statements': [
-        'error',
-        { blankLine: 'always', prev: '*', next: 'return' },
-        { blankLine: 'always', prev: '*', next: 'block-like' },
-        { blankLine: 'always', prev: 'block-like', next: '*' },
-        { blankLine: 'always', prev: ['const', 'let'], next: '*' },
-        { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
-      ],
       'prefer-spread': 'error',
       'prefer-template': 'error',
       'radix': 'error',
