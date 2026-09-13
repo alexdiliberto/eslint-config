@@ -2,19 +2,40 @@
 ## [Unreleased]
 
 
+<a name="v8.0.2"></a>
+## [v8.0.2] - 2026-09-12
+### CI
+- harden package validation ([#570](https://github.com/alexdiliberto/eslint-config/issues/570))
+
+### Chore
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/config-conventional to v21 ([#569](https://github.com/alexdiliberto/eslint-config/issues/569))
+- **deps:** update pnpm to v11.25.0 ([#568](https://github.com/alexdiliberto/eslint-config/issues/568))
+- **deps:** update actions/checkout action to v7 ([#566](https://github.com/alexdiliberto/eslint-config/issues/566))
+- **deps:** update actions/setup-node action to v7 ([#567](https://github.com/alexdiliberto/eslint-config/issues/567))
+- **deps:** update all non-major dependencies ([#564](https://github.com/alexdiliberto/eslint-config/issues/564))
+- **deps:** update dependency eslint to ^10.9.1 ([#565](https://github.com/alexdiliberto/eslint-config/issues/565))
+- **deps:** update dependency eslint to ^10.8.1 ([#563](https://github.com/alexdiliberto/eslint-config/issues/563))
+- **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^21.2.2 ([#562](https://github.com/alexdiliberto/eslint-config/issues/562))
+- **deps:** update dependency eslint to ^10.8.0 ([#561](https://github.com/alexdiliberto/eslint-config/issues/561))
+- **deps:** update all non-major dependencies ([#560](https://github.com/alexdiliberto/eslint-config/issues/560))
+- **deps:** update dependency tape to ^5.10.2 ([#559](https://github.com/alexdiliberto/eslint-config/issues/559))
+- **deps:** update all non-major dependencies ([#558](https://github.com/alexdiliberto/eslint-config/issues/558))
+
+
 <a name="v8.0.1"></a>
 ## [v8.0.1] - 2026-07-24
 ### CI
 - fix Node 24 package validation ([#556](https://github.com/alexdiliberto/eslint-config/issues/556))
 
 ### Chore
-- **deps:** lock file maintenance ([#554](https://github.com/alexdiliberto/eslint-config/issues/554))
+- release v8.0.1
+- **deps:** update eslint & prettier to ^10.5.0 ([#548](https://github.com/alexdiliberto/eslint-config/issues/548))
 - **deps:** update dependency eslint to ^10.7.0 ([#553](https://github.com/alexdiliberto/eslint-config/issues/553))
 - **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to ^21.2.1 ([#552](https://github.com/alexdiliberto/eslint-config/issues/552))
 - **deps:** update release & commit tooling ([#551](https://github.com/alexdiliberto/eslint-config/issues/551))
 - **deps:** update all non-major dependencies ([#550](https://github.com/alexdiliberto/eslint-config/issues/550))
 - **deps:** update release & commit tooling to ^4.3.2 ([#549](https://github.com/alexdiliberto/eslint-config/issues/549))
-- **deps:** update eslint & prettier to ^10.5.0 ([#548](https://github.com/alexdiliberto/eslint-config/issues/548))
+- **deps:** lock file maintenance ([#554](https://github.com/alexdiliberto/eslint-config/issues/554))
 - **deps:** update eslint & prettier to ^10.4.1 ([#547](https://github.com/alexdiliberto/eslint-config/issues/547))
 - **deps:** update all non-major dependencies to v11.6.0 ([#546](https://github.com/alexdiliberto/eslint-config/issues/546))
 - **deps:** update all non-major dependencies to v11.5.2 ([#545](https://github.com/alexdiliberto/eslint-config/issues/545))
@@ -977,7 +998,8 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.1...HEAD
+[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.2...HEAD
+[v8.0.2]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.1...v8.0.2
 [v8.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.0...v8.0.1
 [v8.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.3...v8.0.0
 [v7.0.3]: https://github.com/alexdiliberto/eslint-config/compare/v7.0.2...v7.0.3
