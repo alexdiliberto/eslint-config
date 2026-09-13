@@ -40,7 +40,7 @@ test('validate: flat config exports expected shape', (t) => {
   t.ok(flatConfig.length > 0 && typeof flatConfig[0] === 'object', 'first element is an object');
 });
 
-test('validate: config loads and applies with no rule crashes', async (t) => {
+test('validate: config loads and applies with no rule crashes', async(t) => {
   // Lint a trivial file to confirm the config resolves plugins, rules, and structure.
   const cli = mkCLI();
   const [report] = await cli.lintText('/* empty test */\n', { filePath: path.join(fakeDir, 'noop.js') });
@@ -52,7 +52,7 @@ test('validate: config loads and applies with no rule crashes', async (t) => {
   t.equal(report.fixableWarningCount, 0, 'report.fixableWarningCount === 0');
 });
 
-test('lint: valid.js', async (t) => {
+test('lint: valid.js', async(t) => {
   const cli = mkCLI();
   const [report] = await cli.lintFiles([path.join(fakeDir, 'valid.js')]);
 
@@ -80,7 +80,7 @@ test('guard: no core stylistic rule IDs present', (t) => {
   t.deepEqual(offenders, [], 'all stylistic rules use @stylistic/* IDs');
 });
 
-test('lint: invalid.js (all fixable)', async (t) => {
+test('lint: invalid.js (all fixable)', async(t) => {
   const cli = mkCLI();
   const [report] = await cli.lintFiles([path.join(fakeDir, 'invalid.js')]);
 
@@ -92,7 +92,7 @@ test('lint: invalid.js (all fixable)', async (t) => {
   t.equal(report.fixableErrorCount, report.errorCount, 'fixableErrorCount matches errorCount');
 });
 
-test('fix: invalid.js is auto-fixed and idempotent', async (t) => {
+test('fix: invalid.js is auto-fixed and idempotent', async(t) => {
   const cliFix = mkCLI({ fix: true });
   const file = path.join(fakeDir, 'invalid.js');
   const expectedRaw = await fs.readFile(path.join(fakeDir, 'invalid.fixed.js'), 'utf8');
@@ -112,7 +112,7 @@ test('fix: invalid.js is auto-fixed and idempotent', async (t) => {
   t.notOk(fixedAgain[0].output, 'second pass makes no further changes');
 });
 
-test('idempotent: already formatted file remains unchanged', async (t) => {
+test('idempotent: already formatted file remains unchanged', async(t) => {
   t.plan(2);
   const cli = mkCLI({ fix: true });
   const file = path.join(fakeDir, 'invalid.fixed.js');
@@ -121,7 +121,7 @@ test('idempotent: already formatted file remains unchanged', async (t) => {
   t.notOk(report.output, 'no further fixes produced');
 });
 
-test('enforcement: non-fixable core rules fire (no-unused-vars / no-console / eqeqeq)', async (t) => {
+test('enforcement: non-fixable core rules fire (no-unused-vars / no-console / eqeqeq)', async(t) => {
   t.plan(5);
   const cli = mkCLI();
   // Preformatted to avoid stylistic fixables; only core rule violations should fire.
@@ -145,7 +145,7 @@ test('enforcement: non-fixable core rules fire (no-unused-vars / no-console / eq
 });
 
 // Consumer-style test: write a CommonJS eslint.config.js and let ESLint discover it
-test('consumer: extends via imported flat config', async (t) => {
+test('consumer: extends via imported flat config', async(t) => {
   t.plan(1);
 
   const tmp = path.join(baseDir, '.tmp-consumer-flat');
@@ -176,7 +176,7 @@ test('consumer: extends via imported flat config', async (t) => {
   t.equal(ruleNotFound, false, 'no missing rule definitions');
 });
 
-test('consumer: ESM config can import package', async (t) => {
+test('consumer: ESM config can import package', async(t) => {
   t.plan(1);
 
   const tmp = path.join(baseDir, '.tmp-consumer-flat-esm');
@@ -208,13 +208,15 @@ test('consumer: ESM config can import package', async (t) => {
   t.equal(ruleNotFound, false, 'ESM consumer loads config without rule resolution errors');
 });
 
-test('integrity: config is not mutated across ESLint runs', async (t) => {
+test('integrity: config is not mutated across ESLint runs', async(t) => {
   t.plan(1);
   const snapshot = (cfg) => JSON.stringify(
-    cfg.map(({ rules, languageOptions }) => ({
-      rules,
-      languageOptions
-    }))
+    cfg.map(({ rules, languageOptions }) => {
+      return {
+        rules,
+        languageOptions
+      };
+    })
   );
   const before = snapshot(flatConfig);
   await mkCLI().lintText('/* a */', { filePath: 'a.js' });
