@@ -1,7 +1,18 @@
 {
   "$schema": "https://unpkg.com/release-it@21/schema/release-it.json",
   "hooks": {
-    "before:init": ["pnpm check"]
+    "before:init": [
+      "pnpm check"
+    ]
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits"
+      },
+      "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": true
+    }
   },
   "git": {
     "tagName": "v${version}",
