@@ -131,7 +131,19 @@ Version 9 is a breaking release with these changes:
 
 ## Release
 
-Releases are automated using [`release-it`](https://github.com/release-it/release-it).
+Releases use [`release-it`](https://github.com/release-it/release-it) for versioning, changelog generation, Git tags, and GitHub releases. The tag-triggered [`publish.yml`](.github/workflows/publish.yml) workflow publishes to npm using trusted publishing.
+
+### One-time npm setup
+
+Configure a trusted publisher in the npm settings for `@alexdiliberto/eslint-config`:
+
+* Provider: GitHub Actions
+* Organization or user: `alexdiliberto`
+* Repository: `eslint-config`
+* Workflow filename: `publish.yml`
+* Allowed action: `npm publish`
+
+No npm access token is required. After the first successful trusted publication, set npm publishing access to require two-factor authentication and disallow tokens.
 
 ### 1. Prepare the repository
 
@@ -150,41 +162,7 @@ node -p "require('./package.json').version"
 git describe --tags --abbrev=0
 ```
 
-### 2. Create a temporary npm token
-
-Create a short-lived [granular npm access token](https://www.npmjs.com/settings/alexdiliberto/tokens/) with:
-
-* Name: `eslint-config-release`
-* Expiration: as short as practical
-* Package access: `@alexdiliberto/eslint-config`
-* Permission: Read and write
-* Bypass 2FA: Enabled
-
-Do not print or commit the token.
-
-Load it into an isolated temporary npm configuration:
-
-```bash
-read -rsp "NPM token: " NPM_TOKEN
-echo
-
-export NPM_CONFIG_USERCONFIG="$(mktemp)"
-
-printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" \
-  > "$NPM_CONFIG_USERCONFIG"
-
-chmod 600 "$NPM_CONFIG_USERCONFIG"
-```
-
-Verify npm access:
-
-```bash
-npm whoami
-npm access list collaborators --json @alexdiliberto/eslint-config
-npm view @alexdiliberto/eslint-config version
-```
-
-### 3. Configure GitHub authentication
+### 2. Configure GitHub authentication
 
 Confirm GitHub CLI authentication:
 
@@ -198,7 +176,7 @@ Expose the GitHub CLI token to `release-it` without printing it:
 export GITHUB_TOKEN="$(gh auth token)"
 ```
 
-### 4. Preview and publish the release
+### 3. Preview and create the release
 
 Choose the appropriate semantic-version bump:
 
@@ -214,9 +192,17 @@ pnpm release patch
 
 Replace `patch` with `minor` or `major` when appropriate.
 
-`release-it` will run linting and tests, update the version and changelog, publish to npm, create and push the Git tag, and create the GitHub release.
+`release-it` runs linting and tests, updates the version and changelog, creates and pushes the Git tag, and creates the GitHub release. Pushing the tag starts the npm publishing workflow.
 
-### 5. Verify the release
+### 4. Verify publication
+
+Wait for the publishing workflow to finish:
+
+```bash
+gh run list --workflow=publish.yml --limit=1
+```
+
+Then verify npm, Git, and GitHub:
 
 ```bash
 npm view @alexdiliberto/eslint-config version
@@ -228,18 +214,11 @@ git status
 gh release view "v$(node -p "require('./package.json').version")"
 ```
 
-### 6. Remove temporary credentials
+### 5. Remove the temporary GitHub environment variable
 
 ```bash
-rm -f "$NPM_CONFIG_USERCONFIG"
-
-unset NPM_CONFIG_USERCONFIG
-unset NPM_TOKEN
 unset GITHUB_TOKEN
 ```
-
-Delete the temporary granular token from npm after verifying the release.
-
 ## License
 
 MIT © [Alex DiLiberto](https://alexdiliberto.com/)
