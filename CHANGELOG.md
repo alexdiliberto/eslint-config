@@ -1,9 +1,9 @@
-<a name="unreleased"></a>
-## [Unreleased]
-
+# Changelog
 
 <a name="v9.0.0"></a>
 ## [v9.0.0] - 2026-09-12
+### Features
+- require ESLint 10 ([#571](https://github.com/alexdiliberto/eslint-config/issues/571))
 
 <a name="v8.0.2"></a>
 ## [v8.0.2] - 2026-09-12
@@ -1002,7 +1002,6 @@ consumers must upgrade their version of node >= v6 to be compatible with this sh
 <a name="v1.0.0"></a>
 ## v1.0.0 - 2017-07-08
 
-[Unreleased]: https://github.com/alexdiliberto/eslint-config/compare/v9.0.0...HEAD
 [v9.0.0]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.2...v9.0.0
 [v8.0.2]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.1...v8.0.2
 [v8.0.1]: https://github.com/alexdiliberto/eslint-config/compare/v8.0.0...v8.0.1
