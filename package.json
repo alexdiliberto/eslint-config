@@ -32,7 +32,6 @@
   "scripts": {
     "check": "pnpm lint && pnpm test",
     "clean": "rm -rf node_modules",
-    "commit": "git-cz",
     "lint": "eslint . --max-warnings=0",
     "prepare": "husky",
     "release": "release-it",
@@ -44,21 +43,14 @@
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "devDependencies": {
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
     "@release-it/conventional-changelog": "^12.0.2",
-    "commitizen": "^4.3.2",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^10.10.0",
+    "eslint": "^10.12.0",
     "globals": "^17.13.0",
     "husky": "^9.1.7",
-    "release-it": "^21.1.0",
+    "release-it": "^21.1.1",
     "tape": "^5.10.2"
   },
   "peerDependencies": {
