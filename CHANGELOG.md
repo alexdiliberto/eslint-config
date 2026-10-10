@@ -1,5 +1,11 @@
 # Changelog
 
+## [9.0.1](https://github.com/alexdiliberto/eslint-config/compare/v9.0.0...v9.0.1) (2026-10-10)
+
+### Bug Fixes
+
+* **release:** make changelog generation reproducible ([#572](https://github.com/alexdiliberto/eslint-config/issues/572)) ([52e74f7](https://github.com/alexdiliberto/eslint-config/commit/52e74f79150e0c0045e10c57783eac0051b4a244))
+
 <a name="v9.0.0"></a>
 ## [v9.0.0] - 2026-09-12
 ### Features
