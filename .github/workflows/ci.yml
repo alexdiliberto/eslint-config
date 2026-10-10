@@ -106,6 +106,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Audit Dependencies
+        run: pnpm audit --audit-level high
+
       - name: Pack Package
         id: pack
         shell: bash
