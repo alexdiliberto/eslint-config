@@ -56,13 +56,13 @@
   "peerDependencies": {
     "eslint": "^10.0.0"
   },
-  "packageManager": "pnpm@11.28.3",
+  "packageManager": "pnpm@11.28.5",
   "engines": {
     "node": "^22.13.0 || >=24"
   },
   "volta": {
     "node": "24.15.0",
-    "pnpm": "11.28.3"
+    "pnpm": "11.28.5"
   },
   "publishConfig": {
     "access": "public"
