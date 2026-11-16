@@ -45,10 +45,10 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.3",
-    "@commitlint/config-conventional": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.4",
     "@release-it/conventional-changelog": "^12.0.2",
     "eslint": "^10.12.0",
-    "globals": "^17.13.0",
+    "globals": "^17.14.0",
     "husky": "^9.1.7",
     "release-it": "^21.1.1",
     "tape": "^5.10.2"
@@ -56,13 +56,13 @@
   "peerDependencies": {
     "eslint": "^10.0.0"
   },
-  "packageManager": "pnpm@11.28.5",
+  "packageManager": "pnpm@11.28.11",
   "engines": {
     "node": "^22.13.0 || >=24"
   },
   "volta": {
     "node": "24.15.0",
-    "pnpm": "11.28.5"
+    "pnpm": "11.28.11"
   },
   "publishConfig": {
     "access": "public"
